@@ -1,4 +1,4 @@
 const PostPage = () => {
-  return <div>PostPage</div>;
+  return <div className="h-[200vh]">PostPage</div>;
 };
 export default PostPage;

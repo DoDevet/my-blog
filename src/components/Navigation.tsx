@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 import NavMenu from "./NavMenu";
 import DarkMode from "./DarkMode";
 export default function Navigation({
@@ -9,11 +8,11 @@ export default function Navigation({
 }) {
   return (
     <>
-      <div className="relative flex items-center justify-center w-full px-5">
+      <div className="fixed z-10 flex items-center justify-center w-full px-5 shadow-md backdrop-blur-sm">
         <div className="flex items-center justify-between w-full py-6 max-w-7xl">
           <>
             <Link href="/" className="text-xl font-semibold ">
-              Jihun's Blog
+              DOZI
             </Link>
           </>
           <div className="hidden space-x-7 md:block">
@@ -28,7 +27,7 @@ export default function Navigation({
           <NavMenu />
         </div>
       </div>
-      <div className="flex items-center justify-center">{children}</div>
+      <div className="flex items-center justify-center pt-24">{children}</div>
     </>
   );
 }
