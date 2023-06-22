@@ -1,0 +1,65 @@
+[
+  {
+    "id": "1",
+    "title": "First Posts",
+    "description": "Test",
+    "category": "Test",
+    "date": "2023-06-22",
+    "image": "/images/profile.png",
+    "featured": true
+  },
+  {
+    "id": "2",
+    "title": "Second Posts",
+    "description": "Test",
+    "category": "Any",
+    "date": "2023-06-22",
+    "image": "/images/profile.png",
+    "featured": true
+  },
+  {
+    "id": "3",
+    "title": "Third Posts",
+    "description": "Test",
+    "category": "Any",
+    "date": "2023-06-22",
+    "image": "/images/profile.png",
+    "featured": false
+  },
+  {
+    "id": "4",
+    "title": "4 Posts",
+    "description": "Test",
+    "category": "Test",
+    "date": "2023-06-22",
+    "image": "/images/profile.png",
+    "featured": true
+  },
+  {
+    "id": "5",
+    "title": "5 Posts",
+    "description": "Test",
+    "category": "Test",
+    "date": "2023-06-22",
+    "image": "/images/profile.png",
+    "featured": true
+  },
+  {
+    "id": "6",
+    "title": "6 Posts",
+    "description": "Test",
+    "category": "Test",
+    "date": "2023-06-22",
+    "image": "/images/profile.png",
+    "featured": true
+  },
+  {
+    "id": "7",
+    "title": "7 Posts",
+    "description": "Test",
+    "category": "Test",
+    "date": "2023-06-22",
+    "image": "/images/profile.png",
+    "featured": true
+  }
+]

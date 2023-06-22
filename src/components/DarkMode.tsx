@@ -4,30 +4,25 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
 const DarkMode = () => {
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState<string>("dark");
   const { theme, setTheme } = useTheme();
+
   const onClick = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
   useEffect(() => {
-    setMounted(true);
-  }, []);
+    if (theme && theme !== mounted) setMounted(theme);
+  }, [theme, setMounted, mounted]);
 
-  if (!mounted)
-    return (
-      <div className="px-2 transition-colors cursor-pointer hover:text-slate-400">
-        <BsSun className="w-6 h-6 " />
-      </div>
-    );
   return (
     <div
       className="px-2 transition-colors cursor-pointer hover:text-slate-400"
       onClick={onClick}
     >
-      {theme === "dark" ? (
-        <BsMoon className="w-6 h-6" />
+      {mounted === "light" ? (
+        <BsMoon className="w-8 h-8 p-1" />
       ) : (
-        <BsSun className="w-6 h-6" />
+        <BsSun className="w-8 h-8 p-1" />
       )}
     </div>
   );
