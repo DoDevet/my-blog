@@ -1,7 +1,7 @@
 import Image from "next/image";
-import ProfileImage from "../../../public/images/profile.png";
-import RouteButton from "../Button";
-export default function HomeProfile() {
+import ProfileImage from "../../public/images/profile.png";
+import RouteButton from "./Button";
+export default function Profile() {
   return (
     <section className="text-center">
       <Image

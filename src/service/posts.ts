@@ -1,7 +1,7 @@
 import path from "path";
 import { promises as fs } from "fs";
 
-interface getPostsProps {
+export interface getPostsProps {
   isFeatured?: boolean;
   category?: string;
 }
