@@ -1,20 +1,20 @@
 "use client";
-import Carousel from "react-multi-carousel";
+import Carousel, { CarouselProps, ResponsiveType } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Postcard from "./Postcard";
 import { Post } from "@/service/posts";
-import { useEffect, useRef, useState } from "react";
+import { LegacyRef, useEffect, useRef, useState } from "react";
 
-const responsive = {
+const responsive: ResponsiveType = {
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
+    breakpoint: { max: 3000, min: 1537 },
     items: 4,
-    paritialVisibilityGutter: 60,
+    partialVisibilityGutter: 30,
   },
   tablet: {
     breakpoint: { max: 1536, min: 769 },
     items: 3,
-    paritialVisibilityGutter: 50,
+    paritialVisibilityGutter: 30,
   },
   mobile: {
     breakpoint: { max: 768, min: 0 },
@@ -23,23 +23,20 @@ const responsive = {
   },
 };
 export default function CarouselPosts({ posts }: { posts: Post[] }) {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<Carousel>(null);
   const [hover, setHover] = useState(true);
   useEffect(() => {
-    if (ref && ref.current?.onmouseover) {
-      setHover(false);
-    }
-    if (ref && ref.current?.onmouseleave) {
-      setHover(true);
-    }
+    if (ref.current?.containerRef.current?.onmouseenter) {
+    } else setHover(true);
   }, [ref]);
   return (
     <>
-      <div ref={ref}>
+      <div>
         <Carousel
+          ref={ref}
           autoPlaySpeed={5000}
           autoPlay={hover}
-          ssr
+          partialVisible
           infinite
           renderButtonGroupOutside={true}
           containerClass="carousel-container"
