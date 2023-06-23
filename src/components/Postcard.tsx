@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Postcard = (post: Post) => {
   return (
-    <div className="relative w-full py-2 rounded-md shadow-2xl">
+    <div className="relative w-full py-2 rounded-md shadow-md">
       <Image
         key={post.id}
         src={post.image}

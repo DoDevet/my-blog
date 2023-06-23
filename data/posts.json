@@ -15,7 +15,7 @@
     "category": "Any",
     "date": "2023-06-22",
     "image": "/images/profile.png",
-    "featured": true
+    "featured": false
   },
   {
     "id": "3",
@@ -33,7 +33,7 @@
     "category": "Test",
     "date": "2023-06-22",
     "image": "/images/profile.png",
-    "featured": true
+    "featured": false
   },
   {
     "id": "5",
@@ -42,7 +42,7 @@
     "category": "Test",
     "date": "2023-06-22",
     "image": "/images/profile.png",
-    "featured": true
+    "featured": false
   },
   {
     "id": "6",
@@ -60,6 +60,6 @@
     "category": "Test",
     "date": "2023-06-22",
     "image": "/images/profile.png",
-    "featured": true
+    "featured": false
   }
 ]
