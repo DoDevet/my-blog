@@ -3,20 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Postcard = (post: Post) => {
-  const slug = post.id;
   return (
     <div
-      className="relative w-full transition-transform dark:bg-[#202023]
-bg-[#fff9da] rounded-md shadow-md hover:scale-105"
+      className="relative w-full transition-transform dark:bg-[#2d2d2f]
+bg-[#fffadb] rounded-sm shadow-md hover:scale-105"
     >
-      <Link href={`/posts/${slug}`}>
+      <Link href={`/posts/${post.path}`}>
         <Image
           key={post.id}
           src={post.image}
           alt={post.image}
           width={60}
           height={60}
-          className="object-cover w-full rounded-t-md h-36"
+          className="object-cover w-full rounded-t-sm h-36"
         />
         <span className="absolute mt-1 text-xs text-gray-600 right-1 dark:text-gray-300">
           {post.date.toString()}

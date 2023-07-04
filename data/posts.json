@@ -5,6 +5,7 @@
     "description": "Test",
     "category": "Test",
     "date": "2023-06-22",
+    "path": "first-post",
     "image": "/images/profile.png",
     "featured": true
   },
@@ -14,88 +15,68 @@
     "description": "Test",
     "category": "Any",
     "date": "2023-06-22",
+    "path": "second-post",
     "image": "/images/profile.png",
     "featured": false
   },
   {
     "id": "3",
-    "title": "Third Posts",
+    "title": "Second Posts",
     "description": "Test",
     "category": "Any",
     "date": "2023-06-22",
+    "path": "second-post",
     "image": "/images/profile.png",
     "featured": false
   },
   {
     "id": "4",
-    "title": "4 Posts",
+    "title": "Second Posts",
     "description": "Test",
-    "category": "Test",
+    "category": "Any",
     "date": "2023-06-22",
+    "path": "second-post",
     "image": "/images/profile.png",
     "featured": false
   },
   {
     "id": "5",
-    "title": "5 Posts",
+    "title": "Second Posts",
     "description": "Test",
-    "category": "Test",
+    "category": "Any",
     "date": "2023-06-22",
+    "path": "second-post",
     "image": "/images/profile.png",
     "featured": false
   },
   {
     "id": "6",
-    "title": "6 Posts",
+    "title": "Second Posts",
     "description": "Test",
-    "category": "Test",
+    "category": "Any",
     "date": "2023-06-22",
+    "path": "second-post",
     "image": "/images/profile.png",
-    "featured": true
+    "featured": false
   },
   {
     "id": "7",
-    "title": "7 Posts",
+    "title": "Second Posts",
     "description": "Test",
-    "category": "Test",
+    "category": "Any",
     "date": "2023-06-22",
-    "image": "/images/profile2.png",
+    "path": "second-post",
+    "image": "/images/profile.png",
     "featured": false
   },
   {
     "id": "8",
-    "title": "8 Posts",
+    "title": "Second Posts",
     "description": "Test",
-    "category": "Test",
+    "category": "Any",
     "date": "2023-06-22",
-    "image": "/images/profile2.png",
-    "featured": false
-  },
-  {
-    "id": "9",
-    "title": "happy-hash",
-    "description": "Test",
-    "category": "Portfoilo",
-    "date": "2023-06-22",
-    "image": "/images/Nothing.png",
-    "featured": false
-  },
-  {
-    "id": "10",
-    "title": "Strand",
-    "description": "Test",
-    "category": "Portfoilo",
-    "date": "2023-06-22",
-    "image": "/images/Nothing.png",
-    "featured": false
-  },
-  {
-    "id": "11",
-    "title": "Wetube",
-    "description": "Test",
-    "category": "Portfoilo",
-    "date": "2023-06-22",
-    "image": "/images/Nothing.png",
+    "path": "second-post",
+    "image": "/images/profile.png",
     "featured": false
   }
 ]
