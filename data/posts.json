@@ -78,5 +78,15 @@
     "path": "second-post",
     "image": "/images/profile.png",
     "featured": false
+  },
+  {
+    "id": "9",
+    "title": "Portfoilo",
+    "description": "Portfoilo",
+    "category": "Portfoilo",
+    "date": "2023-06-22",
+    "path": "second-post",
+    "image": "/images/profile.png",
+    "featured": false
   }
 ]
