@@ -3,6 +3,7 @@ import { Post } from "@/service/posts";
 import GridPosts from "../GridPosts";
 import { useState } from "react";
 import Categories from "../Categories";
+import Postcard from "../Postcard";
 
 const ALL_POSTS = "All Posts";
 export default function FilterPosts({
@@ -21,7 +22,11 @@ export default function FilterPosts({
   const onClickCategory = (category: string) => setSelectedCategory(category);
   return (
     <section className="flex justify-center space-x-3">
-      <GridPosts posts={filteredPosts} />
+      <GridPosts>
+        {filteredPosts.map((posts) => (
+          <Postcard {...posts} />
+        ))}
+      </GridPosts>
       <Categories
         categories={[ALL_POSTS, ...categories]}
         selectedCategory={selectedCategory}

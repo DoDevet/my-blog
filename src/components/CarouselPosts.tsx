@@ -19,7 +19,11 @@ const responsive: ResponsiveType = {
     items: 1,
   },
 };
-export default function CarouselPosts({ posts }: { posts: Post[] }) {
+export default function CarouselPosts({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const ref = useRef<Carousel>(null);
   const [hover, setHover] = useState(true);
   useEffect(() => {
@@ -28,24 +32,20 @@ export default function CarouselPosts({ posts }: { posts: Post[] }) {
   }, [ref]);
   return (
     <>
-      <div>
-        <Carousel
-          ref={ref}
-          autoPlaySpeed={5000}
-          autoPlay={hover}
-          infinite
-          centerMode
-          renderButtonGroupOutside={true}
-          containerClass="carousel-container"
-          className="space-x-3"
-          responsive={responsive}
-          itemClass="px-1 py-3 w-full"
-        >
-          {posts?.map((post) => (
-            <Postcard key={post.id} {...post} />
-          ))}
-        </Carousel>
-      </div>
+      <Carousel
+        ref={ref}
+        autoPlaySpeed={5000}
+        autoPlay={hover}
+        infinite
+        centerMode
+        renderButtonGroupOutside={true}
+        containerClass="carousel-container"
+        className="space-x-3"
+        responsive={responsive}
+        itemClass="px-1 py-3 w-full"
+      >
+        {children}
+      </Carousel>
     </>
   );
 }
