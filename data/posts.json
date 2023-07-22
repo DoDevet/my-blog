@@ -1,23 +1,23 @@
 [
   {
     "id": "1",
-    "title": "First Posts",
-    "description": "Test",
-    "category": "Test",
+    "title": "Happy Hash",
+    "description": "해시태그 커뮤니티",
+    "category": "Portfoilo",
     "date": "2023-06-22",
-    "path": "first-post",
-    "image": "/images/profile.png",
+    "path": "happy-hash-post",
+    "image": "/images/posts/happy-hash.png",
     "featured": true
   },
   {
     "id": "2",
-    "title": "Second Posts",
-    "description": "Test",
-    "category": "Any",
+    "title": "My Blog",
+    "description": "블로그 개발",
+    "category": "Portfoilo",
     "date": "2023-06-22",
-    "path": "second-post",
-    "image": "/images/profile.png",
-    "featured": false
+    "path": "my-blog",
+    "image": "/images/posts/my-blog.png",
+    "featured": true
   },
   {
     "id": "3",
@@ -74,16 +74,6 @@
     "title": "Second Posts",
     "description": "Test",
     "category": "Any",
-    "date": "2023-06-22",
-    "path": "second-post",
-    "image": "/images/profile.png",
-    "featured": false
-  },
-  {
-    "id": "9",
-    "title": "Portfoilo",
-    "description": "Portfoilo",
-    "category": "Portfoilo",
     "date": "2023-06-22",
     "path": "second-post",
     "image": "/images/profile.png",

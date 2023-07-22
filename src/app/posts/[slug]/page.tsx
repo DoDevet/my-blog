@@ -1,6 +1,7 @@
+import MarkdownViewer from "@/components/posts/MarkdownViewer";
 import { getPostsDetail } from "@/service/posts";
-import { ReactMarkdown } from "react-markdown/lib/react-markdown";
-
+import Image from "next/image";
+import { AiTwotoneCalendar } from "react-icons/ai";
 type PostDetailProps = {
   params: {
     slug: string;
@@ -8,8 +9,24 @@ type PostDetailProps = {
 };
 
 const PostDetail = async ({ params: { slug } }: PostDetailProps) => {
-  const post = await getPostsDetail(slug);
+  const { title, content, image } = await getPostsDetail(slug);
 
-  return <ReactMarkdown>{post.postDetail}</ReactMarkdown>;
+  return (
+    <article>
+      <Image
+        className="w-auto h-auto"
+        src={image}
+        priority
+        alt={title}
+        width={760}
+        height={420}
+      />
+      <AiTwotoneCalendar />
+      <section>
+        <h1>{title}</h1>
+        <MarkdownViewer content={content} />
+      </section>
+    </article>
+  );
 };
 export default PostDetail;

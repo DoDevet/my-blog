@@ -17,10 +17,6 @@ export interface Post {
   featured: boolean;
 }
 
-interface PostDetail extends Post {
-  content: string;
-}
-
 export const getPosts = async ({
   category,
   isFeatured,
@@ -52,6 +48,6 @@ export const getPostsDetail = async (post_path: string) => {
     posts.find((post) => post.path === post_path)
   );
   if (!metadata) throw new Error(`${post_path} Not Found`);
-  const postDetail = await fs.readFile(filePath, "utf-8");
-  return { ...metadata, postDetail };
+  const content = await fs.readFile(filePath, "utf-8");
+  return { ...metadata, content };
 };

@@ -1,8 +1,6 @@
 "use client";
 import Carousel, { ResponsiveType } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Postcard from "./Postcard";
-import { Post } from "@/service/posts";
 import { useEffect, useRef, useState } from "react";
 
 const responsive: ResponsiveType = {
@@ -31,21 +29,19 @@ export default function CarouselPosts({
     } else setHover(true);
   }, [ref]);
   return (
-    <>
-      <Carousel
-        ref={ref}
-        autoPlaySpeed={5000}
-        autoPlay={hover}
-        infinite
-        centerMode
-        renderButtonGroupOutside={true}
-        containerClass="carousel-container"
-        className="space-x-3"
-        responsive={responsive}
-        itemClass="px-1 py-3 w-full"
-      >
-        {children}
-      </Carousel>
-    </>
+    <Carousel
+      ref={ref}
+      autoPlaySpeed={5000}
+      autoPlay={hover}
+      infinite
+      centerMode
+      renderButtonGroupOutside={true}
+      containerClass="carousel-container"
+      className="space-x-3"
+      responsive={responsive}
+      itemClass="px-1 py-3 w-full"
+    >
+      {children}
+    </Carousel>
   );
 }

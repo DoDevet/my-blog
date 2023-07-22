@@ -24,7 +24,7 @@ export default function FilterPosts({
     <section className="flex justify-center space-x-3">
       <GridPosts>
         {filteredPosts.map((posts) => (
-          <Postcard {...posts} />
+          <Postcard key={posts.id} {...posts} />
         ))}
       </GridPosts>
       <Categories

@@ -13,8 +13,8 @@ bg-[#fffadb] rounded-sm shadow-md hover:scale-105"
           key={post.id}
           src={post.image}
           alt={post.image}
-          width={60}
-          height={60}
+          width={700}
+          height={700}
           className="object-cover w-full rounded-t-sm h-36"
         />
         <span className="absolute mt-1 text-xs text-gray-600 right-1 dark:text-gray-300">
