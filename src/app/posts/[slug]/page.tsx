@@ -1,4 +1,5 @@
 import { getPostsDetail } from "@/service/posts";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 type PostDetailProps = {
   params: {
@@ -7,13 +8,8 @@ type PostDetailProps = {
 };
 
 const PostDetail = async ({ params: { slug } }: PostDetailProps) => {
-  const data = await getPostsDetail(slug);
+  const post = await getPostsDetail(slug);
 
-  return (
-    <>
-      <h1>{data.title}</h1>
-      <pre>{data.postDetail}</pre>
-    </>
-  );
+  return <ReactMarkdown>{post.postDetail}</ReactMarkdown>;
 };
 export default PostDetail;
