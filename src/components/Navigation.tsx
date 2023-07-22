@@ -1,31 +1,40 @@
+"use client";
 import Link from "next/link";
 import NavMenu from "./NavMenu";
 import DarkMode from "./DarkMode";
+import { usePathname } from "next/navigation";
+import { cls } from "@/libs/utils";
+import { router } from "@/constants";
+
 export default function Navigation() {
+  const pathname = usePathname();
+
   return (
-    <>
-      <div className="fixed top-0 right-0 z-10 flex items-center justify-center w-full px-3 shadow-md md:px-36 backdrop-blur-sm">
-        <div className="flex items-center justify-between w-full py-6 max-w-7xl">
-          <>
+    <div className="fixed top-0 right-0 z-10 flex items-center justify-center w-full px-3 shadow-md md:px-36 backdrop-blur-sm">
+      <div className="flex items-center justify-between w-full py-6 max-w-7xl">
+        <Link href="/" className="text-xl font-semibold hover:animate-pulse">
+          {`DOZI's Blog`}
+        </Link>
+
+        <ul className="hidden space-x-7 md:block">
+          {router.map(([href, name]) => (
             <Link
-              href="/"
-              className="text-xl font-semibold hover:animate-pulse"
+              href={href}
+              key={href}
+              className={cls(
+                "transition-colors",
+                pathname === href ? "text-indigo-400" : "hover:text-indigo-400"
+              )}
             >
-              {`DOZI's Blog`}
+              {name}
             </Link>
-          </>
-          <div className="hidden space-x-7 md:block">
-            <Link href="/">home</Link>
-            <Link href="/about">about</Link>
-            <Link href="/posts">posts</Link>
-            <Link href="/contact">contact</Link>
-          </div>
-        </div>
-        <div className="flex ml-16 space-x-2">
-          <DarkMode />
-          <NavMenu />
-        </div>
+          ))}
+        </ul>
       </div>
-    </>
+      <div className="flex ml-16 space-x-2">
+        <DarkMode />
+        <NavMenu />
+      </div>
+    </div>
   );
 }

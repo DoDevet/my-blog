@@ -6,7 +6,6 @@ import { cls } from "@/libs/utils";
 
 const NavMenu = () => {
   const [modal, setModal] = useState(false);
-
   const onClickMenu = () => {
     setModal((prev) => !prev);
   };
