@@ -28,7 +28,7 @@ bg-[#fff7cd] rounded-md"
         />
         <div>
           <IntroduceForm title="My Portfoilo" />
-          <PostsForm carousel category={"Portfoilo"} isFeatured={false} />
+          <PostsForm carousel category="Portfoilo" />
         </div>
       </section>
     </>

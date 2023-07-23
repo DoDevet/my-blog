@@ -1,19 +1,8 @@
-Next.js 13ver에서 새롭게 도입된 app router로 만들어 본 블로그 입니다.
+React is a JavaScript library for building user interfaces.
 
-스타일링:  
-tailwind css
+## A Simple Component
 
-사용 라이브러리:  
-react-markdown  
-remark-gfm  
-react-multi-carousel  
-next-themes  
-tailwindcss
-
-## 차이점
-
-페이지 단위에서 컴포넌트 단위로 렌더링 됨.  
-`render()` method that takes input data and returns what to display. This example uses an XML-like syntax called JSX. Input data that is passed into the component can be accessed by `render()` via `this.props`.
+React components implement a `render()` method that takes input data and returns what to display. This example uses an XML-like syntax called JSX. Input data that is passed into the component can be accessed by `render()` via `this.props`.
 
 ```jsx
 class HelloMessage extends React.Component {

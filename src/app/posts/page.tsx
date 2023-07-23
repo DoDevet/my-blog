@@ -1,5 +1,3 @@
-import Categories from "@/components/Categories";
-import GridPosts from "@/components/GridPosts";
 import FilterPosts from "@/components/posts/FilterPosts";
 import { getAllCategories, getPosts } from "@/service/posts";
 

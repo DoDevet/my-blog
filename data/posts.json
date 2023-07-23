@@ -1,6 +1,16 @@
 [
   {
     "id": "1",
+    "title": "My Blog",
+    "description": "Next.js v13 블로그 개발",
+    "category": "Portfoilo",
+    "date": "2023-06-22",
+    "path": "my-blog",
+    "image": "/images/posts/my-blog.png",
+    "featured": true
+  },
+  {
+    "id": "2",
     "title": "Happy Hash",
     "description": "해시태그 커뮤니티",
     "category": "Portfoilo",
@@ -9,41 +19,32 @@
     "image": "/images/posts/happy-hash.png",
     "featured": true
   },
+
   {
-    "id": "2",
-    "title": "My Blog",
-    "description": "블로그 개발",
+    "id": "3",
+    "title": "Strand",
+    "description": "커뮤니티 모바일 어플리케이션",
     "category": "Portfoilo",
     "date": "2023-06-22",
-    "path": "my-blog",
-    "image": "/images/posts/my-blog.png",
+    "path": "strand-post",
+    "image": "/images/posts/strand.png",
     "featured": true
   },
   {
-    "id": "3",
-    "title": "Second Posts",
-    "description": "Test",
-    "category": "Any",
-    "date": "2023-06-22",
-    "path": "second-post",
-    "image": "/images/profile.png",
-    "featured": false
-  },
-  {
     "id": "4",
-    "title": "Second Posts",
-    "description": "Test",
-    "category": "Any",
+    "title": "원티드 프리온보딩 인턴십",
+    "description": "원티드 프리온보딩 인턴십 회고록",
+    "category": "Wanted",
     "date": "2023-06-22",
-    "path": "second-post",
-    "image": "/images/profile.png",
-    "featured": false
+    "path": "wanted-post",
+    "image": "/images/posts/wanted-pre-onboarding.png",
+    "featured": true
   },
   {
     "id": "5",
     "title": "Second Posts",
     "description": "Test",
-    "category": "Any",
+    "category": "PS",
     "date": "2023-06-22",
     "path": "second-post",
     "image": "/images/profile.png",

@@ -9,21 +9,31 @@ type PostDetailProps = {
 };
 
 const PostDetail = async ({ params: { slug } }: PostDetailProps) => {
-  const { title, content, image } = await getPostsDetail(slug);
+  const { title, description, content, image, date } = await getPostsDetail(
+    slug
+  );
 
   return (
     <article>
       <Image
-        className="w-auto h-auto"
+        className="w-full h-auto rounded-md shadow-md"
         src={image}
         priority
         alt={title}
         width={760}
         height={420}
       />
-      <AiTwotoneCalendar />
+
       <section>
-        <h1>{title}</h1>
+        <div className="flex items-center justify-end space-x-3 font-semibold text-gray-500 dark:text-gray-300 ">
+          <AiTwotoneCalendar />
+          <p>{date.toString()}</p>
+        </div>
+        <h1 className="text-4xl font-bold">{title}</h1>
+        <p className="mb-3 text-xl text-gray-600 dark:text-gray-300">
+          {description}
+        </p>
+        <div className="w-full bg-white border-b border-gray-600 dark:border-gray-300 " />
         <MarkdownViewer content={content} />
       </section>
     </article>

@@ -25,7 +25,7 @@ export const getPosts = async ({
   const data = await fs.readFile(filePath, "utf-8");
   let posts: Post[] = JSON.parse(data);
 
-  if (isFeatured === false || isFeatured === true) {
+  if (isFeatured !== undefined) {
     posts = posts.filter((post) => post.featured === isFeatured);
   }
   if (category) {

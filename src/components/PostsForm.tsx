@@ -15,6 +15,7 @@ const PostsForm = async ({
   carousel,
 }: PostsProps) => {
   const posts = await getPosts({ category, isFeatured });
+
   return (
     <section>
       {title ? <h1 className="text-2xl font-bold ">{title}</h1> : null}

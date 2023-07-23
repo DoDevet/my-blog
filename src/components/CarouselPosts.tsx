@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 const responsive: ResponsiveType = {
   desktop: {
     breakpoint: { max: 3000, min: 1537 },
-    items: 4,
+    items: 3,
   },
   tablet: {
     breakpoint: { max: 1536, min: 769 },
@@ -34,7 +34,6 @@ export default function CarouselPosts({
       autoPlaySpeed={5000}
       autoPlay={hover}
       infinite
-      centerMode
       renderButtonGroupOutside={true}
       containerClass="carousel-container"
       className="space-x-3"
