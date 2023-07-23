@@ -1,34 +1,41 @@
+"use client";
 import { cls } from "@/libs/utils";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface CategoriesProps {
   categories: string[];
-  selectedCategory: string;
-  onClick: (category: string) => void;
 }
 
-const Categories = ({
-  categories,
-  onClick,
-  selectedCategory,
-}: CategoriesProps) => {
+const Categories = ({ categories }: CategoriesProps) => {
+  const pathname = usePathname();
   return (
-    <section className="w-24 mt-3">
+    <section
+      className={`w-24 mt-3 ${
+        pathname.includes("categories") || pathname === "/posts"
+          ? "block"
+          : "hidden"
+      }`}
+    >
       <ul className="fixed w-24">
         <h1 className="pb-2 text-xl font-semibold border-b border-gray-700 dark:border-gray-300">
           Categories
         </h1>
-        <section className="py-2 space-y-1">
+        <section className="flex flex-col py-2 space-y-1">
           {categories?.map((category, index) => (
-            <li
+            <Link
+              href={index === 0 ? `/posts` : `/posts/categories/${category}`}
               className={cls(
                 "cursor-pointer hover:text-indigo-400 transition-colors",
-                selectedCategory === category ? "text-indigo-400" : ""
+                pathname.includes(category) ||
+                  (pathname === "/posts" && index === 0)
+                  ? "text-indigo-400"
+                  : ""
               )}
               key={index}
-              onClick={() => onClick(category)}
             >
               {category}
-            </li>
+            </Link>
           ))}
         </section>
       </ul>
