@@ -8,7 +8,6 @@ import { router } from "@/constants";
 
 export default function Navigation() {
   const pathname = usePathname();
-
   return (
     <div className="fixed top-0 right-0 z-10 flex items-center justify-center w-full px-3 shadow-md md:px-36 backdrop-blur-lg">
       <div className="flex items-center justify-between w-full py-6 max-w-7xl">
@@ -17,13 +16,17 @@ export default function Navigation() {
         </Link>
 
         <ul className="hidden space-x-7 md:block">
-          {router.map(([href, name]) => (
+          {router.map(([href, name], index) => (
             <Link
               href={href}
               key={href}
               className={cls(
-                "transition-colors",
-                pathname === href ? "text-indigo-400" : "hover:text-indigo-400"
+                "transition-colors hover:text-indigo-400",
+                index !== 0 && pathname.startsWith(href)
+                  ? "text-indigo-400"
+                  : index === 0 && pathname === href
+                  ? "text-indigo-400"
+                  : ""
               )}
             >
               {name}
