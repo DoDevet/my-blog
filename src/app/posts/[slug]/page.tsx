@@ -14,7 +14,7 @@ const PostDetail = async ({ params: { slug } }: PostDetailProps) => {
   );
 
   return (
-    <article>
+    <article className="w-full max-w-4xl">
       <Image
         className="w-full h-auto rounded-md shadow-md"
         src={image}

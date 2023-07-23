@@ -1,10 +1,15 @@
 import GridPosts from "@/components/GridPosts";
 import Postcard from "@/components/Postcard";
-
 import { getPosts } from "@/service/posts";
 
-const PostPage = async () => {
-  const posts = await getPosts({});
+export default async function CategoriesPage({
+  params,
+}: {
+  params: { slug: string };
+}) {
+  const { slug: category } = params;
+  const posts = await getPosts({ category });
+
   return (
     <GridPosts>
       {posts.map((posts) => (
@@ -12,5 +17,4 @@ const PostPage = async () => {
       ))}
     </GridPosts>
   );
-};
-export default PostPage;
+}
