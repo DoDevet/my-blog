@@ -22,7 +22,7 @@ bg-[#fffadb] rounded-sm shadow-md hover:scale-105"
         </span>
         <section className="flex flex-col items-center justify-center py-5 space-y-3">
           <h1 className="text-sm font-semibold">{post.title}</h1>
-          <h2 className="text-sm text-gray-600 dark:text-gray-300">
+          <h2 className="text-sm text-center text-gray-600 dark:text-gray-300">
             {post.description}
           </h2>
           <span className="px-2 py-1 text-xs text-white bg-indigo-400 rounded-full">
