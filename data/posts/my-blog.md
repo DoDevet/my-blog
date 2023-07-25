@@ -1,4 +1,4 @@
-Next.js 13ver에서 새롭게 도입된 app router로 만들어 본 블로그 입니다.
+Next.js 13ver app router 개발 환경으로 만든 블로그
 
 스타일링:  
 tailwind css
@@ -23,6 +23,10 @@ class HelloMessage extends React.Component {
 }
 
 root.render(<HelloMessage name="Taylor" />);
+```
+
+```jsx
+const hello = "world";
 ```
 
 ## Declarative

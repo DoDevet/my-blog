@@ -42,12 +42,17 @@ export const getAllCategories = async () => {
   return categories;
 };
 
-export const getPostsDetail = async (post_path: string) => {
-  const filePath = path.join(process.cwd(), "data", "posts", `${post_path}.md`);
-  const metadata = await getPosts({}).then((posts) =>
-    posts.find((post) => post.path === post_path)
-  );
-  if (!metadata) throw new Error(`${post_path} Not Found`);
+export const getPostsDetail = async (postPath: string) => {
+  const filePath = path.join(process.cwd(), "data", "posts", `${postPath}.md`);
+  const posts = await getPosts({});
+  const index = posts.findIndex((prev) => prev.path === postPath);
+
+  if (!posts) throw new Error(`${postPath} Not Found`);
   const content = await fs.readFile(filePath, "utf-8");
-  return { ...metadata, content };
+  return {
+    ...posts[index],
+    content,
+    nextPost: posts[index + 1],
+    prevPost: posts[index - 1],
+  };
 };

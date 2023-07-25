@@ -17,10 +17,13 @@ const EmailForm = () => {
     console.log(email, message, title);
   };
   return (
-    <div className="relative flex flex-col w-full max-w-2xl ">
+    <div className="relative flex flex-col w-full max-w-2xl">
       <Divider text="OR" />
-      <h1 className="pb-3 mx-auto font-semibold">Send Email</h1>
-      <form className="flex flex-col w-full" onSubmit={handleSubmit(onSubmit)}>
+      <h1 className="py-3 mx-auto font-semibold">Send Email</h1>
+      <form
+        className="flex flex-col w-full space-y-1"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <Input
           type="email"
           labelText="Your email"
