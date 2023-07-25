@@ -8,13 +8,13 @@ const Modal = () => {
   return (
     <>
       <div className="fixed top-0 right-0 w-full h-screen" />
-      <div className="absolute h-auto px-2 py-2 space-y-10 border dark:bg-[#202023] bg-[#fff9da] border-gray-300 rounded-md shadow-md dark:border-zinc-500 top-14 w-36 right-4">
-        <div className="flex flex-col space-y-2">
+      <div className="absolute py-2 border md:hidden dark:bg-[#202023] bg-[#fff9da] border-gray-300 rounded-md shadow-md dark:border-zinc-700 top-16 w-48 right-2">
+        <div className="flex flex-col space-y-1">
           {router.map(([href, name], index) => (
             <Link
               key={href}
               className={cls(
-                "transition-colors hover:text-indigo-400",
+                "transition-colors hover:text-indigo-400 dark:hover:bg-[#28282c] p-2",
                 index !== 0 && pathname.startsWith(href)
                   ? "text-indigo-400"
                   : index === 0 && pathname === href

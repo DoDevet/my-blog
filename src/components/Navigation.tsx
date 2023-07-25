@@ -10,7 +10,7 @@ export default function Navigation() {
   const pathname = usePathname();
   return (
     <div className="fixed top-0 right-0 z-10 flex items-center justify-center w-full px-3 shadow-md md:px-36 backdrop-blur-lg">
-      <div className="flex items-center justify-between w-full py-6 max-w-7xl">
+      <div className="flex items-center justify-between w-full py-4 max-w-7xl">
         <Link href="/" className="text-xl font-semibold hover:animate-pulse">
           {`DOZI's Blog`}
         </Link>

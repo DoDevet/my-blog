@@ -9,7 +9,7 @@ interface IPostNav {
   left?: boolean;
 }
 const ICON_CLASS =
-  "group-hover:scale-125 w-9 h-9 p-1 group-hover:text-orange-500 rounded-full transition-colors transition-transform";
+  "group-hover:scale-125 w-9 h-9 p-1 group-hover:text-orange-400 rounded-full transition-colors transition-transform";
 export default function PostNav({
   description,
   image,
@@ -20,10 +20,10 @@ export default function PostNav({
   return (
     <Link
       href={`/posts/${path}`}
-      className="relative w-full transition-transform bg-black group hover:scale-105"
+      className="relative w-full transition-transform bg-black rounded-sm shadow-md group hover:scale-105"
     >
       <Image
-        className="object-cover w-full opacity-30 max-h-32"
+        className="object-cover w-full rounded-sm opacity-50 max-h-32"
         src={image}
         width={1500}
         height={500}

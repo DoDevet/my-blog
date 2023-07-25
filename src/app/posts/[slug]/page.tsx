@@ -14,7 +14,7 @@ const PostDetail = async ({ params: { slug } }: PostDetailProps) => {
   const { title, image, nextPost, prevPost } = post;
 
   return (
-    <article className="w-full ">
+    <article className="w-full">
       <Image
         className="w-full h-auto rounded-md shadow-md"
         src={image}
