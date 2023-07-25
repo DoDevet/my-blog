@@ -8,7 +8,8 @@ interface IPostNav {
   description: string;
   left?: boolean;
 }
-
+const ICON_CLASS =
+  "group-hover:scale-125 w-9 h-9 p-1 group-hover:text-orange-500 rounded-full transition-colors transition-transform";
 export default function PostNav({
   description,
   image,
@@ -19,28 +20,23 @@ export default function PostNav({
   return (
     <Link
       href={`/posts/${path}`}
-      className="relative z-0 flex w-full overflow-hidden transition-transform md:max-h-48 max-h-32 hover:scale-105"
+      className="relative w-full transition-transform bg-black group hover:scale-105"
     >
-      <div className="absolute z-10 w-full h-full bg-black opacity-50" />
       <Image
-        className="object-cover w-full h-full "
+        className="object-cover w-full opacity-30 max-h-32"
         src={image}
-        width={1200}
+        width={1500}
         height={500}
         alt={image}
       />
-      <section className="absolute z-20 flex items-center justify-center w-full h-full text-white">
-        {left && (
-          <AiOutlineLeft className="absolute w-8 h-8 p-1 bg-orange-400 rounded-full left-2" />
-        )}
-        <div className="">
-          <h1 className="text-lg font-semibold">{title}</h1>
-          <p className="text-sm">{description}</p>
+      <div className="absolute flex items-center justify-around w-full px-3 text-white -translate-x-1/2 -translate-y-1/2 group top-1/2 left-1/2 ">
+        {left && <AiOutlineLeft className={ICON_CLASS} />}
+        <div className="w-full text-center">
+          <h1 className="text-base font-semibold md:text-xl">{title}</h1>
+          <p className="text-xs md:text-sm">{description}</p>
         </div>
-        {!left && (
-          <AiOutlineRight className="absolute w-8 h-8 p-1 bg-orange-400 rounded-full right-2" />
-        )}
-      </section>
+        {!left && <AiOutlineRight className={ICON_CLASS} />}
+      </div>
     </Link>
   );
 }

@@ -1,7 +1,7 @@
 import { getPostsDetail } from "@/service/posts";
 import Image from "next/image";
 import PostContent from "./PostContent";
-import PostNavContainer from "./PostsNavContainer";
+import PostNav from "./PostNav";
 
 type PostDetailProps = {
   params: {
@@ -25,7 +25,10 @@ const PostDetail = async ({ params: { slug } }: PostDetailProps) => {
       />
 
       <PostContent {...post} />
-      <PostNavContainer nextPost={nextPost} prevPost={prevPost} />
+      <nav className="flex items-center py-4 space-x-4">
+        {prevPost && <PostNav left {...prevPost} />}
+        {nextPost && <PostNav {...nextPost} />}
+      </nav>
     </article>
   );
 };

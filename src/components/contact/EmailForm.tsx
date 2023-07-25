@@ -48,7 +48,7 @@ const EmailForm = () => {
             required: true,
           })}
         />
-        <button className="absolute px-2 py-1 transition-colors bg-indigo-500 rounded-md right-1 -bottom-9 hover:bg-indigo-600">
+        <button className="absolute px-2 py-1 text-white transition-colors bg-indigo-500 rounded-md right-1 -bottom-9 hover:bg-indigo-600">
           Send
         </button>
       </form>

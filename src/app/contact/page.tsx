@@ -4,8 +4,10 @@ import Link from "next/link";
 const ContactPage = () => {
   return (
     <section className="flex flex-col items-center justify-center mx-auto space-y-3 ">
-      <p className="font-semibold ">Contact Me</p>
-      <span className="text-sm ">ehwlgns000@gmail.com</span>
+      <p className="text-lg font-semibold">Contact Me</p>
+      <span className="text-sm">ehwlgns000@gmail.com</span>
+      <span className="text-sm">010-9271-3943</span>
+
       <Link href="https://github.com/DoDevet">
         <svg
           height="32"
