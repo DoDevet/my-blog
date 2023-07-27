@@ -18,7 +18,7 @@ const PostsForm = async ({
 
   return (
     <section>
-      {title ? <h1 className="text-2xl font-bold ">{title}</h1> : null}
+      {title ? <h1 className="text-2xl font-bold">{title}</h1> : null}
       {carousel ? (
         <CarouselPosts>
           {posts.map((post) => (
