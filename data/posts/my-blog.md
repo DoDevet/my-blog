@@ -1,72 +1,86 @@
-Next.js 13ver app router 개발 환경으로 만든 블로그
+스타일링:
 
-스타일링:  
-tailwind css
+- tailwind css
 
-사용 라이브러리:  
-react-markdown  
-remark-gfm  
-react-multi-carousel  
-next-themes  
-tailwindcss
+사용 라이브러리:
 
-## 차이점
+- react-icons
+- react-markdown
+- react-syntax-highlighter
+- remark-gfm
+- react-multi-carousel
+- next-themes
+- nodemailer
 
-페이지 단위에서 컴포넌트 단위로 렌더링 됨.  
-`render()` method that takes input data and returns what to display. This example uses an XML-like syntax called JSX. Input data that is passed into the component can be accessed by `render()` via `this.props`.
+## Page Router와의 차이점
 
-```jsx
-class HelloMessage extends React.Component {
-  render() {
-    return <div>Hello {this.props.name}</div>;
-  }
-}
+Page Router로 만든 happy-hash 프로젝트와 많은 차이점이 있었다.
 
-root.render(<HelloMessage name="Taylor" />);
-```
+1. 서버 컴포넌트
 
-```jsx
-const hello = "world";
-```
+- Page Router에서는 페이지 단위로 렌더링이 되지만, App Router에선 컴포넌트 단위로 렌더링 된다.
+- 서버 컴포넌트는 js 번들링 사이즈를 줄이는데 효과적이며, 컴포넌트 단위로 구분이 되기에 사용하기 용이해졌다.
+- 서버측과 클라이언트측에서 처리해주어야 하는 일들을 명확히 구분해야 한다.
 
-## Declarative
+2. Routing 방식
 
-React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+- App Router에서 Route를 추가하려면 폴더를 생성해야 한다.
+- api 는 폴더 생성후 route.tsx를 만들어 Method 별 기능을 구현하도록 변경되었다.
 
-A paragraph with _emphasis_ and **strong importance**.
+3. route 구성요소
 
-> A block quote with ~strikethrough~ and a URL: https://reactjs.org.
+- 404, loading, error, layout 등 개발에 필요한 것들을 쉽게 만들 수 있게 되었다.
 
-- Lists
-- [ ] todo
-- [x] done
+4. SSR, ISR, SSG 적용
 
-## Component-Based
+- Page Router에서는 각 페이지별로 설정해주어야 했다.
+- App Router에서는 fetch로 데이터 요청시 cache 옵션에 따라 변경됨.
 
-Build encapsulated components that manage their own state, then compose them to make complex UIs.
+## 구현 기능
 
-Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
+1. 다크모드
+   ![image](/images/blogImages/darkmode-2.png)
+   ![image](/images/blogImages/darkmode-1.png)
+   우측 상단 아이콘을 눌러 테마 변경 가능
 
-## Learn Once, Write Anywhere
+2. 반응형 웹 디자인.  
+   `tailwind css`를 통해 쉽게 구현할 수 있었다.  
+   크기에 따라 보여지는 Posts의 갯수도 조절하였다.
 
-We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code.
+   - Full screen
+     ![image](/images/blogImages/responsive-web-1.png)
+   - md size screen  
+     사라진 header는 메뉴 아이콘이 대체한다.
+     ![image](/images/blogImages/responsive-web-2.png)
 
-React can also render on the server using Node and power mobile apps using React Native.
+3. CarouselPosts
+   ![image](/images/blogImages/carousel.png)
+   `react-multi-carousel` 라이브러리를 사용하여 만들었다.
+   click 이벤트가 있기에 최상단에 'use client' 를 적어주어야 한다.
 
-![React Office desk](https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)
+4. Post Categories
+   ![image](/images/blogImages/categories.png)
 
-> The most important addition in React 18 is something we hope you never have to think about: concurrency. We think this is largely true for application developers, though the story may be a bit more complicated for library maintainers.
+   state로 filtering을 하게 되면 브라우저 이동시 기존값을 기억하지 못하고  
+   카테고리별 SEO를 적용할 수 없어 중첩 Layout를 통해 구현해보았다.
 
-Concurrency is not a feature, per se. It’s a new behind-the-scenes mechanism that enables React to prepare multiple versions of your UI at the same time. You can think of concurrency as an implementation detail — it’s valuable because of the features that it unlocks. React uses sophisticated techniques in its internal implementation, like priority queues and multiple buffering. But you won’t see those concepts anywhere in our public APIs.
+   중첩 레이아웃이 되어 Post Detail Page에선 보여지지 않도록 hidden 옵션을 사용했는데  
+   이게 과연 좋은 접근인지는 잘 모르겠다.
 
-When we design APIs, we try to hide implementation details from developers. As a React developer, you focus on what you want the user experience to look like, and React handles how to deliver that experience. So we don’t expect React developers to know how concurrency works under the hood.
+5. Post Navigation
+   ![image](/images/blogImages/post-navi.png)
 
-However, Concurrent React is more important than a typical implementation detail — it’s a foundational update to React’s core rendering model. So while it’s not super important to know how concurrency works, it may be worth knowing what it is at a high level.
+   PostDetail 페이지의 하단에 prev Post, next Post navigation을 구현하였다.
 
-A key property of Concurrent React is that rendering is interruptible. When you first upgrade to React 18, before adding any concurrent features, updates are rendered the same as in previous versions of React — in a single, uninterrupted, synchronous transaction. With synchronous rendering, once an update starts rendering, nothing can interrupt it until the user can see the result on screen.
+## 후기
 
-In a concurrent render, this is not always the case. React may start rendering an update, pause in the middle, then continue later. It may even abandon an in-progress render altogether. React guarantees that the UI will appear consistent even if a render is interrupted. To do this, it waits to perform DOM mutations until the end, once the entire tree has been evaluated. With this capability, React can prepare new screens in the background without blocking the main thread. This means the UI can respond immediately to user input even if it’s in the middle of a large rendering task, creating a fluid user experience.
+[디자인에 도움이 된 블로그](https://www.craftz.dog/)  
+[카테고리 구현에 도움이 된 블로그](https://www.braydoncoyer.dev/)
 
-Another example is reusable state. Concurrent React can remove sections of the UI from the screen, then add them back later while reusing the previous state. For example, when a user tabs away from a screen and back, React should be able to restore the previous screen in the same state it was in before. In an upcoming minor, we’re planning to add a new component called `<Offscreen>` that implements this pattern. Similarly, you’ll be able to use Offscreen to prepare new UI in the background so that it’s ready before the user reveals it.
+렌더링 기준이 변경되어 서버측에서 처리해야할 로직들을 좀 더 구체적으로 구분해야할 필요성을 느꼈다.
 
-Concurrent rendering is a powerful new tool in React and most of our new features are built to take advantage of it, including Suspense, transitions, and streaming server rendering. But React 18 is just the beginning of what we aim to build on this new foundation.
+happy hash 프로젝트에선 SEO 최적화와 markdown 작성을 제대로 하지 않았었다.  
+원티드 프리온보딩 인턴십에서 동료학습을 통해 좋은 markdown 라이브러리를 알게 되었고,  
+블로그 프로젝트 특성상 정적인 웹페이지를 제공하기 때문에 SSG와 SEO도 적절하게 잘 활용하게 된거 같아 만족스럽다.
+
+이번 프로젝트를 경험으로 기능적으로도, 디자인적으로도 happy hash 프로젝트의 보완점을 느끼게 되었다.

@@ -10,9 +10,9 @@ export default function Profile() {
         className="object-cover w-32 h-32 mx-auto border rounded-full shadow-md"
         priority
       />
-      <h1 className="text-xl font-semibold">{`Hi, I'm Dozi`}</h1>
+      <h1 className="text-xl font-semibold">{`Hi, I'm Jihun`}</h1>
       <p>{`Front-End`}</p>
-      <p className="text-gray-400">Newbie Developer</p>
+      <p className="text-gray-400">Aim to be a Full-Stack</p>
       <RouteButton href="/contact" btnText="Contact Me" />
     </section>
   );
