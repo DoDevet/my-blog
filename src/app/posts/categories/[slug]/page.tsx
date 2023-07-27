@@ -29,3 +29,8 @@ export default async function CategoriesPage({
     </GridPosts>
   );
 }
+
+export const generateStaticParams = async () => {
+  const posts = await getPosts({});
+  return posts.map((post) => ({ slug: post.category }));
+};

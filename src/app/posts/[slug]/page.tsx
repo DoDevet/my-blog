@@ -1,4 +1,4 @@
-import { getPostsDetail } from "@/service/posts";
+import { getPosts, getPostsDetail } from "@/service/posts";
 import Image from "next/image";
 import PostContent from "./PostContent";
 import PostNav from "./PostNav";
@@ -41,3 +41,9 @@ const PostDetail = async ({ params: { slug } }: PostDetailProps) => {
   );
 };
 export default PostDetail;
+export const generateStaticParams = async () => {
+  const posts = await getPosts({});
+  return posts.map((post) => ({
+    slug: post.path,
+  }));
+};
