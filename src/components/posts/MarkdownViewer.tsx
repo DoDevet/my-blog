@@ -17,11 +17,12 @@ const MarkdownViewer = ({ content }: { content: string }) => {
             <SyntaxHighlighter
               {...props}
               customStyle={{ padding: 15, margin: 0 }}
-              children={String(children).replace(/\n$/, "")}
               style={vscDarkPlus}
               language={match[1]}
               PreTag="div"
-            />
+            >
+              {String(children).replace(/\n$/, "")}
+            </SyntaxHighlighter>
           ) : (
             <code {...props} className={className}>
               {children}

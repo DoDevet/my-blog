@@ -2,11 +2,19 @@ import { getPostsDetail } from "@/service/posts";
 import Image from "next/image";
 import PostContent from "./PostContent";
 import PostNav from "./PostNav";
+import { Metadata } from "next";
 
 type PostDetailProps = {
   params: {
     slug: string;
   };
+};
+
+export const generateMetadata = async ({
+  params: { slug },
+}: PostDetailProps): Promise<Metadata> => {
+  const { title, description } = await getPostsDetail(slug);
+  return { title, description };
 };
 
 const PostDetail = async ({ params: { slug } }: PostDetailProps) => {

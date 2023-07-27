@@ -1,6 +1,17 @@
 import "./globals.css";
 import Navigation from "../components/Navigation";
 import Providers from "./providers";
+
+export const metadata = {
+  title: {
+    default: "Jihun's Blog",
+    template: "Jihun's Blog | %s",
+  },
+  description: "프론트엔드 개발자",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
 export default function RootLayout({
   children,
 }: {

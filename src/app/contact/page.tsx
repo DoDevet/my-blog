@@ -1,6 +1,10 @@
 import EmailForm from "@/components/contact/EmailForm";
+import { Metadata } from "next";
 import Link from "next/link";
 
+export const metadata: Metadata = {
+  title: "Contact",
+};
 const ContactPage = () => {
   return (
     <section className="flex flex-col items-center justify-center mx-auto space-y-3 ">

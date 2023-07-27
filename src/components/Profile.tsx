@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ProfileImage from "../../public/images/profile.png";
+import ProfileImage from "../../public/images/my_profile.jpg";
 import RouteButton from "./Button";
 export default function Profile() {
   return (

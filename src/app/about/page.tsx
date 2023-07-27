@@ -3,6 +3,11 @@ import IntroduceForm from "@/components/about/IntroduceForm";
 import Nothing from "../../../public/images/Nothing.png";
 import ProfileImage from "../../../public/images/profile2.png";
 import PostsForm from "@/components/PostsForm";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "About me",
+  description: "My Career",
+};
 const About = () => {
   return (
     <>

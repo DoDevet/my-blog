@@ -31,7 +31,6 @@ export const getPosts = async ({
   if (category) {
     posts = posts.filter((post) => post.category === category);
   }
-
   return posts;
 };
 
