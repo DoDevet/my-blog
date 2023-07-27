@@ -13,7 +13,7 @@ const responsive: ResponsiveType = {
   },
   mobile: {
     breakpoint: { max: 768, min: 0 },
-    items: 1,
+    items: 2,
   },
 };
 export default function CarouselPosts({
@@ -26,7 +26,6 @@ export default function CarouselPosts({
       autoPlaySpeed={5000}
       infinite
       pauseOnHover
-      centerMode
       renderButtonGroupOutside={true}
       containerClass="carousel-container"
       className="space-x-3"
