@@ -1,7 +1,6 @@
 "use client";
 import Carousel, { ResponsiveType } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { useEffect, useRef, useState } from "react";
 
 const responsive: ResponsiveType = {
   desktop: {
@@ -22,18 +21,12 @@ export default function CarouselPosts({
 }: {
   children: React.ReactNode;
 }) {
-  const ref = useRef<Carousel>(null);
-  const [hover, setHover] = useState(true);
-  useEffect(() => {
-    if (ref.current?.containerRef.current?.onmouseenter) {
-    } else setHover(true);
-  }, [ref]);
   return (
     <Carousel
-      ref={ref}
       autoPlaySpeed={5000}
-      autoPlay={hover}
       infinite
+      pauseOnHover
+      centerMode
       renderButtonGroupOutside={true}
       containerClass="carousel-container"
       className="space-x-3"
