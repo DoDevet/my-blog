@@ -30,7 +30,7 @@ export default function CarouselPosts({
       containerClass="carousel-container"
       className="space-x-3"
       responsive={responsive}
-      itemClass="px-1 py-3 w-full"
+      itemClass="px-1 py-3 w-full truncate"
     >
       {children}
     </Carousel>
