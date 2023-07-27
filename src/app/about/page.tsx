@@ -1,4 +1,4 @@
-import HomeProfile from "@/components/Profile";
+import Profile from "@/components/Profile";
 import IntroduceForm from "@/components/about/IntroduceForm";
 import Nothing from "../../../public/images/Nothing.png";
 import ProfileImage from "../../../public/images/profile2.png";
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const About = () => {
   return (
     <>
-      <HomeProfile />
+      <Profile />
       <section
         className="flex flex-col p-4 mt-10 space-y-12 dark:bg-[#26262b]
 bg-[#fff7cd] rounded-md"
