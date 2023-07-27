@@ -3,18 +3,22 @@
 import { useForm } from "react-hook-form";
 import Divider from "../Divider";
 import Input from "../Input";
+import { sendContextMail } from "@/service/contact";
+import { useState } from "react";
 
-interface useFormEmail {
-  email: string;
-  title: string;
+interface IFormEmail {
+  subject: string;
   message: string;
 }
 
 const EmailForm = () => {
-  const { register, handleSubmit } = useForm<useFormEmail>();
+  const [loading, setLoading] = useState(false);
+  const { register, handleSubmit } = useForm<IFormEmail>();
 
-  const onSubmit = ({ email, message, title }: useFormEmail) => {
-    console.log(email, message, title);
+  const onSubmit = async (formData: IFormEmail) => {
+    setLoading(true);
+    const res = await sendContextMail(formData);
+    setLoading(false);
   };
   return (
     <div className="relative flex flex-col w-full max-w-2xl">
@@ -25,18 +29,10 @@ const EmailForm = () => {
         onSubmit={handleSubmit(onSubmit)}
       >
         <Input
-          type="email"
-          labelText="Your email"
-          inputPlaceholder="Input your email"
-          register={register("email", {
-            required: true,
-          })}
-        />
-        <Input
           type="text"
           labelText="Subject"
           inputPlaceholder="Input Subject"
-          register={register("title", {
+          register={register("subject", {
             required: true,
           })}
         />
@@ -49,7 +45,7 @@ const EmailForm = () => {
           })}
         />
         <button className="absolute px-2 py-1 text-white transition-colors bg-indigo-500 rounded-md right-1 -bottom-9 hover:bg-indigo-600">
-          Send
+          {loading ? "Sending..." : "Send"}
         </button>
       </form>
     </div>
