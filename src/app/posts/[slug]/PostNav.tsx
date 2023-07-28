@@ -23,7 +23,7 @@ export default function PostNav({
       className="relative w-full transition-transform bg-black rounded-sm shadow-md group hover:scale-105"
     >
       <Image
-        className="object-cover w-full rounded-sm opacity-50 max-h-32"
+        className="object-cover w-full rounded-sm opacity-50 max-h-24"
         src={image}
         width={1500}
         height={500}

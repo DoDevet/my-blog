@@ -6,7 +6,7 @@ const Postcard = (post: Post) => {
   return (
     <div
       className="relative w-full transition-transform dark:bg-[#2d2d2f]
-bg-[#fffadb] rounded-sm shadow-md hover:scale-105"
+bg-[#fffadb] rounded-sm shadow-md hover:scale-105 !overflow-hidden!"
     >
       <Link href={`/posts/${post.path}`}>
         <Image
