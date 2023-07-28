@@ -1,11 +1,11 @@
+[사이트 링크](https://happy-hash-wine.vercel.app/)  
+[깃허브 링크](https://github.com/DoDevet/happy-hash)  
 Next.js Page Router
 
-[사이트 링크](https://happy-hash-wine.vercel.app/)  
-[깃허브 링크](https://github.com/DoDevet/happy-hash)
+# 소개
 
-React is a JavaScript library for building user interfaces.
-
-## A Simple Component
+[Strand](http://localhost:3000/posts/strand-post) 프로젝트를 진행하면서 접근성 측면에서 아쉬움을 느꼈고,  
+Typescript, Next.js 프레임워크를 배우고 활용하는것이 개발자로써의 역량 향상에 더 도움이 될것이라고 판단하여 만들어 본 프로젝트이다
 
 React components implement a `render()` method that takes input data and returns what to display. This example uses an XML-like syntax called JSX. Input data that is passed into the component can be accessed by `render()` via `this.props`.
 

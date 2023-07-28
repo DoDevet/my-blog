@@ -38,6 +38,25 @@ Page Router로 만든 happy-hash 프로젝트와 많은 차이점이 있었다.
 - Page Router에서는 각 페이지별로 설정해주어야 했다.
 - App Router에서는 fetch로 데이터 요청시 cache 옵션에 따라 변경됨.
 
+5. SEO 최적화
+
+- Page Router 방식에서는 Next.js 프레임워크가 제공하는 Head 컴포넌트에 작성했어야 했다.
+- App Router 에선 metadata obejct를 export 함으로써 적용된다.
+- ```jsx
+  export const metadata = {
+    title: {
+      default: "Jihun's Blog",
+      template: "Jihun's Blog | %s",
+    },
+    description: "프론트엔드 개발자",
+    icons: {
+      icon: "/favicon.ico",
+    },
+  };
+  ```
+  SSG에 적용하고 싶다면 generateMetadata function을 통해서 적용이 가능하다.  
+  사용법이 간단해졌고 재사용성 또한 용이해졌다.
+
 ## 구현 기능
 
 1. 다크모드
@@ -73,6 +92,37 @@ Page Router로 만든 happy-hash 프로젝트와 많은 차이점이 있었다.
    ![image](/images/blogImages/post-navi.png)
 
    PostDetail 페이지의 하단에 prev Post, next Post navigation을 구현하였다.
+
+## 최적화
+
+- db나 fetch 함수로 데이터들을 호출하는것이 아닌, 서버측에 있는 md 파일을 읽는 것이라 최적화 서비스가 없었다.
+
+  ![image](/images/blogImages/cache.png)
+  cache를 통해서 인자값이 같다면 호출을 줄일 수 있었다.
+
+  ```jsx
+  export const getPosts = cache(
+    async ({ category, isFeatured }: getPostsProps): Promise<Post[]> => {
+      const filePath = path.join(process.cwd(), "data", "posts.json");
+      const data = await fs.readFile(filePath, "utf-8");
+      let posts: Post[] = JSON.parse(data);
+
+      if (isFeatured !== undefined) {
+        posts = posts.filter((post) => post.featured === isFeatured);
+      }
+      if (category) {
+        posts = posts.filter((post) => post.category === category);
+      }
+      return posts;
+    }
+  );
+  ```
+
+## 개선안
+
+- Post Detail Toc 구현
+- 고유 component는 app router 내부에 위치하도록 리팩토링
+- service 로직 개선
 
 ## 후기
 
