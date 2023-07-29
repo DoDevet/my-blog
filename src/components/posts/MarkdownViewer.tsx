@@ -8,7 +8,7 @@ import Image from "next/image";
 const MarkdownViewer = ({ content }: { content: string }) => {
   return (
     <ReactMarkdown
-      className="min-w-full prose prose-md prose-neutral dark:prose-invert"
+      className="min-w-full prose lg:prose-lg prose-neutral dark:prose-invert"
       remarkPlugins={[remarkGfm]}
       components={{
         code({ node, inline, className, children, ...props }) {
