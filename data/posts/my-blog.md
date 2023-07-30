@@ -1,6 +1,6 @@
 [Github](https://github.com/DoDevet/my-blog)
 
-스타일링:
+스타일:
 
 - tailwind css
 
@@ -13,6 +13,39 @@
 - react-multi-carousel
 - next-themes
 - nodemailer
+
+파일 구조 :
+
+- ```bash
+    data
+    ┣ posts << 각종 md file
+    ┗ posts.json << Posts 정보
+    src
+     ┣ app
+     ┃ ┣ about
+     ┃ ┣ api
+     ┃ ┃ ┗ contact
+     ┃ ┣ contact
+     ┃ ┣ posts
+     ┃ ┃ ┣ [slug]
+     ┃ ┃ ┃ ┗ page.tsx
+     ┃ ┃ ┣ categories
+     ┃ ┃ ┃ ┗ [slug]
+     ┃ ┃ ┃ ┃ ┗ page.tsx
+     ┃ ┃ ┣ layout.tsx
+     ┃ ┃ ┗ page.tsx
+     ┃ ┣ layout.tsx
+     ┃ ┣ page.tsx
+     ┃ ┗ providers.tsx << theme
+     ┣ components  << 공용 컴포넌트
+     ┣ constants << route 경로
+     ┣ libs
+     ┃ ┗ utils.ts << tailwind Hook
+     ┗ service
+     ┃ ┣ contact.ts
+     ┃ ┣ email.ts << nodemailer
+     ┃ ┗ posts.ts
+  ```
 
 ## Page Router와의 차이점
 
@@ -54,8 +87,9 @@ Page Router로 만든 happy-hash 프로젝트와 많은 차이점이 있었다.
     },
   };
   ```
-  SSG에 적용하고 싶다면 generateMetadata function을 통해서 적용이 가능하다.  
-  사용법이 간단해졌고 재사용성 또한 용이해졌다.
+
+SSG에 적용하고 싶다면 generateMetadata function을 통해서 적용이 가능하다.
+사용법이 간단해졌고 재사용성 또한 용이해졌다.
 
 ## 구현 기능
 
@@ -64,13 +98,13 @@ Page Router로 만든 happy-hash 프로젝트와 많은 차이점이 있었다.
    ![image](/images/blogImages/darkmode-1.png)
    우측 상단 아이콘을 눌러 테마 변경 가능
 
-2. 반응형 웹 디자인.  
-   `tailwind css`를 통해 쉽게 구현할 수 있었다.  
+2. 반응형 웹 디자인.
+   `tailwind css`를 통해 쉽게 구현할 수 있었다.
    크기에 따라 보여지는 Posts의 갯수도 조절하였다.
 
    - Full screen
      ![image](/images/blogImages/responsive-web-1.png)
-   - md size screen  
+   - md size screen
      사라진 header는 메뉴 아이콘이 대체한다.
      ![image](/images/blogImages/responsive-web-2.png)
 
@@ -82,10 +116,10 @@ Page Router로 만든 happy-hash 프로젝트와 많은 차이점이 있었다.
 4. Post Categories
    ![image](/images/blogImages/categories.png)
 
-   state로 filtering을 하게 되면 브라우저 이동시 기존값을 기억하지 못하고  
+   state로 filtering을 하게 되면 브라우저 이동시 기존값을 기억하지 못하고
    카테고리별 SEO를 적용할 수 없어 중첩 Layout를 통해 구현해보았다.
 
-   중첩 레이아웃이 되어 Post Detail Page에선 보여지지 않도록 hidden 옵션을 사용했는데  
+   중첩 레이아웃이 되어 Post Detail Page에선 보여지지 않도록 hidden 옵션을 사용했는데
    이게 과연 좋은 접근인지는 잘 모르겠다.
 
 5. Post Navigation
@@ -131,8 +165,8 @@ Page Router로 만든 happy-hash 프로젝트와 많은 차이점이 있었다.
 
 렌더링 기준이 변경되어 서버측에서 처리해야할 로직들을 좀 더 구체적으로 구분해야할 필요성을 느꼈다.
 
-happy hash 프로젝트에선 SEO 최적화와 markdown 작성을 제대로 하지 않았었다.  
-원티드 프리온보딩 인턴십에서 동료학습을 통해 좋은 markdown 라이브러리를 알게 되었고,  
+happy hash 프로젝트에선 SEO 최적화와 markdown 작성을 제대로 하지 않았었다.
+원티드 프리온보딩 인턴십에서 동료학습을 통해 좋은 markdown 라이브러리를 알게 되었고,
 블로그 프로젝트 특성상 정적인 웹페이지를 제공하기 때문에 SSG와 SEO도 적절하게 잘 활용하게 된거 같아 만족스럽다.
 
 이번 프로젝트의 경험으로 기능, 디자인적으로 많은것을 배웠고, 기존 프로젝트들의 보완점들을 느끼게 되었다.

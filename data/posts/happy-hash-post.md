@@ -1,23 +1,86 @@
-[사이트 링크](https://happy-hash-wine.vercel.app/)  
-[깃허브 링크](https://github.com/DoDevet/happy-hash)  
-Next.js Page Router
+Next.js Page Router + Typescript
 
-# 소개
+## 소개
 
-[Strand](http://localhost:3000/posts/strand-post) 프로젝트를 진행하면서 접근성 측면에서 아쉬움을 느꼈고,  
-Typescript, Next.js 프레임워크를 배우고 활용하는것이 개발자로써의 역량 향상에 더 도움이 될것이라고 판단하여 만들어 본 프로젝트이다
+해시태그를 그룹화 하여 참여할 수 있는 커뮤니티 사이트.  
+SMS 인증 로그인 방식은 현재 닫아놓은 상태이며  
+Guide 페이지는 SSG를 통해 구현.
 
-React components implement a `render()` method that takes input data and returns what to display. This example uses an XML-like syntax called JSX. Input data that is passed into the component can be accessed by `render()` via `this.props`.
+DB
 
-```jsx
-class HelloMessage extends React.Component {
-  render() {
-    return <div>Hello {this.props.name}</div>;
-  }
-}
+- Prisma ORM
+- Mysql
+- planet scale
 
-root.render(<HelloMessage name="Taylor" />);
-```
+스타일
+
+- tailwind css, sass(gray matter style 용)
+
+라이브러리
+
+- heroicons
+- gray matter
+- next-themes
+
+[배포](https://happy-hash-wine.vercel.app/)  
+[깃허브](https://github.com/DoDevet/happy-hash)
+
+파일 구조 :
+
+- ```bash
+   📦libs
+   ┣ 📂client >> 클라이언트 훅
+   ┗ 📂server >> 서버 훅
+
+   📦pages
+   ┣ 📂api
+   ┃ ┣ 📂community
+   ┃ ┃ ┣ 📂posts
+   ┃ ┃ ┃ ┣ 📂[id]
+   ┃ ┃ ┃ ┃ ┣ 📂comments
+   ┃ ┃ ┃ ┃ ┃ ┗ 📜index.ts
+   ┃ ┃ ┃ ┃ ┣ 📜fav.ts
+   ┃ ┃ ┃ ┃ ┗ 📜index.ts
+   ┃ ┃ ┃ ┗ 📜index.ts
+   ┃ ┃ ┗ 📜index.ts
+   ┃ ┣ 📂hashs
+   ┃ ┃ ┗ 📜index.ts
+   ┃ ┣ 📂search
+   ┃ ┃ ┗ 📜index.ts
+   ┃ ┣ 📂user
+   ┃ ┃ ┣ 📂me
+   ┃ ┃ ┃ ┣ 📜[type].ts
+   ┃ ┃ ┃ ┗ 📜index.ts
+   ┃ ┃ ┣ 📜confirm.ts
+   ┃ ┃ ┣ 📜login.ts
+   ┃ ┃ ┗ 📜logout.ts
+   ┃ ┣ 📜files.ts
+   ┃ ┗ 📜ranking.ts
+   ┣ 📂community
+   ┃ ┗ 📂posts
+   ┃ ┃ ┣ 📂[postId]
+   ┃ ┃ ┃ ┣ 📜edit.tsx
+   ┃ ┃ ┃ ┗ 📜index.tsx
+   ┃ ┃ ┣ 📜index.tsx
+   ┃ ┃ ┗ 📜write.tsx
+   ┣ 📂guide
+   ┃ ┣ 📜[slug].tsx
+   ┃ ┗ 📜index.tsx
+   ┣ 📂profile
+   ┃ ┣ 📂[type]
+   ┃ ┃ ┗ 📜index.tsx
+   ┃ ┣ 📜edit.tsx
+   ┃ ┗ 📜index.tsx
+   ┣ 📂search
+   ┃ ┗ 📜index.tsx
+   ┣ 📜_app.tsx
+   ┣ 📜_document.tsx
+   ┣ 📜index.tsx
+   ┣ 📜login.tsx
+   ┗ 📜test.tsx
+
+  📦posts-guide >> Guide 페이지 md 파일
+  ```
 
 ## Declarative
 

@@ -1,6 +1,7 @@
 ## 소개
 
-사용자가 직접 커뮤니티를 만들어 관리하거나 만들어진 커뮤니티에 접속하여 글, 댓글, 채팅방을 개설할 수 있는 커뮤니티 어플리케이션
+사용자가 직접 커뮤니티를 만들어 관리하거나 만들어진 커뮤니티에 접속하여 글, 댓글, 채팅방을 개설할 수 있는 커뮤니티 어플리케이션  
+졸업작품 전시회 장려상 수상
 
 - 프레임워크 : Expo, GraphQL, Prisma ORM
 
@@ -8,12 +9,14 @@
 
 - 라이브러리: React native, react-hook-form
 
-![award-image](/images/strandImages/award.png)
+- 개발기간: 2022-03 ~ 2022-11
+  ![award-image](/images/strandImages/award.png)
 
 [PDF 링크](https://sae.kangnam.ac.kr/comm/cmnFile/download.do?encFileGrpSeq=4f774a85ee1c244fb2d7942c12bb1e79&encFileSeq=c3bdef1247f09487f2e42c3026e536b0)
 
-최소한의 컨벤션도 없이 단순 백업용으로 아무렇게나 작성한 커밋 메세지를 보여줄 수 있을 부분이 아니기도 하고  
-레거시가 된 라이브러리들을 사용하고 있어 졸업작품 보고서 작성시 제출했던 PDF 링크로 대체합니다.
+해당 프로젝트는 Github의 중요성에 대해 인지하지 못한 상태로 시작하여  
+최소한의 컨벤션도 없이 단순 백업용으로 아무렇게나 작성한 커밋 내역이 많이 있습니다.  
+또, 레거시가 된 라이브러리들을 사용하고 있어 졸업작품 보고서 작성시 제출했던 PDF 링크로 대체합니다.
 
 ## 후기
 
