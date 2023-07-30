@@ -19,6 +19,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="naver-site-verification"
+          content="62ffeadf5d6fdc3b76b6be7cd03e54d3acc23686"
+        />
+      </head>
       <body className="dark:bg-[#202023] dark:text-white py-2 text-gray-800 bg-[#fff9da] flex flex-col w-full justify-center items-center">
         <Providers>
           <Navigation />
