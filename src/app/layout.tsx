@@ -1,7 +1,7 @@
 import "./globals.css";
 import Navigation from "../components/Navigation";
 import Providers from "./providers";
-
+import { Inter, Noto_Sans_KR } from "next/font/google";
 export const metadata = {
   title: {
     default: "Jihun's Blog",
@@ -12,13 +12,20 @@ export const metadata = {
     icon: "/favicon.ico",
   },
 };
+
+const inter = Inter({ subsets: ["latin"] });
+const notosans = Noto_Sans_KR({
+  weight: ["100", "300", "400", "500"],
+  subsets: ["latin"],
+});
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.className} ${notosans.className}`}>
       <head>
         <meta
           name="google-site-verification"
