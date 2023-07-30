@@ -21,6 +21,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <meta
+          name="google-site-verification"
+          content="SZe-B-MuwhUmCrPkbBN_G7xoDyN06MUogrEG5MgWYZU"
+        />
+        <meta
           name="naver-site-verification"
           content="62ffeadf5d6fdc3b76b6be7cd03e54d3acc23686"
         />
