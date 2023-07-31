@@ -1,10 +1,13 @@
-Next.js Page Router + Typescript
+[Github](https://github.com/DoDevet/happy-hash)  
+[배포](https://happy-hash-wine.vercel.app/)
 
 ## 소개
 
 해시태그를 그룹화 하여 참여할 수 있는 커뮤니티 사이트.  
 SMS 인증 로그인 방식은 현재 닫아놓은 상태이며  
 Guide 페이지는 SSG를 통해 구현.
+
+**Next.js Page Router + Typescript**
 
 DB
 
@@ -21,9 +24,6 @@ DB
 - heroicons
 - gray matter
 - next-themes
-
-[배포](https://happy-hash-wine.vercel.app/)  
-[깃허브](https://github.com/DoDevet/happy-hash)
 
 파일 구조 :
 
@@ -82,9 +82,9 @@ DB
   📦posts-guide >> Guide 페이지 md 파일
   ```
 
-## Declarative
+## 구현 기능
 
-React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.
+### 1.
 
 A paragraph with _emphasis_ and **strong importance**.
 
