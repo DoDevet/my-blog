@@ -11,9 +11,26 @@ Guide 페이지는 SSG를 통해 구현.
 
 DB
 
-- Prisma ORM
-- Mysql
-- planet scale
+- **Planet scale**
+
+  ![image](/images/happyhashImages/planetScale.png)
+
+  MySQL **Compatible** serverless database platform  
+  Vitess는 MySQL을 스케일링하기 위한 데이터베이스 클러스터링 시스템  
+  Vitess를 기반으로 하는 관계형 데이터 베이스가 PlanetScale이다.
+
+  **db에 브랜치를 제공**하며, 마치 **git과 같은 cli**를 제공해준다.
+
+- **Prisma ORM**
+
+  ![image](/images/happyhashImages/prismaSchema.png)
+
+  DB ORM으로 데이터베이스 테이블을 객체로 취급하여 데이터베이스 작업을 추상화한다.  
+  SQL 쿼리를 작성하지 않고도 데이터베이스 작업을 수행할 수 있으며  
+  **타입 안정성**과 **Prisma Client가 제공하는 자동 완성과 IntelliSense** 등의 이점을 취할 수 있다.
+
+- **Prisma ERD**
+  ![image](/images/happyhashImages/happyhash-erd.svg)
 
 스타일
 
@@ -24,6 +41,7 @@ DB
 - heroicons
 - gray matter
 - next-themes
+- iron-session
 
 파일 구조 :
 
@@ -31,7 +49,7 @@ DB
    📦libs
    ┣ 📂client >> 클라이언트 훅
    ┗ 📂server >> 서버 훅
-
+   📦components >> 컴포넌트
    📦pages
    ┣ 📂api
    ┃ ┣ 📂community
@@ -56,6 +74,7 @@ DB
    ┃ ┃ ┗ 📜logout.ts
    ┃ ┣ 📜files.ts
    ┃ ┗ 📜ranking.ts
+   ┃ ┃
    ┣ 📂community
    ┃ ┗ 📂posts
    ┃ ┃ ┣ 📂[postId]
@@ -84,7 +103,23 @@ DB
 
 ## 구현 기능
 
-### 1.
+### 1. 로그인
+
+로그인 인증방식은 iron session 라이브러리를 사용하여 구현했습니다.
+
+### 2. 프로필
+
+### 3. 해시태그 등록
+
+### 4. 검색
+
+### 5. 해시태그 홈
+
+### 6. Post, Comment CRUD
+
+### 7. Modal Post Detail
+
+### 8. 반응형 웹
 
 A paragraph with _emphasis_ and **strong importance**.
 
