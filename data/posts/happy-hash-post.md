@@ -737,7 +737,7 @@ if (req.method === "GET") {
 Edit을 클릭하게 되면 edit을 위한 form이 나온다.  
 Cancel을 누르거나, 댓글의 내용이 변화하지 않았을때는 요청을 보내지 않도록 구현하였다.
 
-### 8. Modal Post Routing
+### 8. Post Modal Routing
 
 글 목록 요청시 글 목록마다 세부사항에 대한 내용들이 일부 들어있도록 구현하였다.  
 글을 클릭시 props로 데이터를 보내면서 로딩없이 빠른 환경을 제공하기 위함이다.
