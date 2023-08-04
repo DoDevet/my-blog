@@ -399,14 +399,16 @@ Create와 Edit은 서로 컴포넌트를 공유한다.
 Enter 버튼이나 해시태그를 클릭시 나오는 화면.  
 글 조회, 작성, 필터링을 할 수 있다.
 
-scroll 이벤트를 사용하여 무한 스크롤 구현  
+useSwrInfinite 라이브러리와 scroll 이벤트를 사용하여 무한 스크롤 구현  
 데이터 페칭(로딩시) 추가 요청을 하지 않게 throttle 최적화를 해주었다.
 
 ![image](/images/happyhashImages/hash-comu-2.png)
 
 하단의 별 표시는 필터링으로 게시글의 좋아요 갯수, 조회수, 댓글 수를 필터링 할 수 있는 옵션을 제공한다.  
-좋아요 개수만 필터링 하도록 세팅하였으며, 기본 세팅은 10으로 되어있다.  
-해당 기능은 state로 관리되어 페이지를 새로고침 하면 초기화 된다.
+현재는 좋아요 필터링 만 구현했으며, 기본 세팅은 10으로 되어있다.
+
+해당 기능은 state로 관리되어 페이지를 새로고침 하면 초기화 된다.  
+숏컷과 각 해시에
 
 ### 6. Post
 
@@ -556,6 +558,10 @@ scroll 이벤트를 사용하여 무한 스크롤 구현
   세션에 저장되어 있는 유저의 id와 해당 글의 유저id가 같다면 자신이 작성한것으로 간주  
   우측 최상단에 ellipsis 아이콘을 보여준다.
 
+  props로 초기데이터, useSWR로 최신 데이터를 가져오고, 하트 클릭시 useSWR에서 제공하는 mutate를 사용하여 캐시데이터를 편집해 요청의 결과를 기다리지 않고 즉각적인 반응을 얻을 수 있게 구현하였다.
+
+  디테일 페이지와 PostFeed 두곳에 mutate 기능을 사용함으로써 해시홈의 PostFeed에도 적용이 된다.
+
 - #### 3. Update
 
   ![image](/images/happyhashImages/post-crud-3.png)
@@ -665,34 +671,143 @@ scroll 이벤트를 사용하여 무한 스크롤 구현
   };
   ```
 
-### 7. Post Detail
+### 7. Comments
 
-## Component-Based
+![image](/images/happyhashImages/comments-1.png)
+맨 하단의 textarea로 댓글을 작성할 수 있다.  
+"Comments" 우측 아이콘은 현재 comments를 최신 상태로 다시 불러온다.  
+ 댓글이 10개 이상일 시 우측 상단의 pagination navigator 가 생긴다.
 
-Build encapsulated components that manage their own state, then compose them to make complex UIs.
+![image](/images/happyhashImages/comments-2.png)
+자신이 작성한 comments라면 댓글 컴포넌트 우측 하단에 아이콘이 생긴다.  
+ 해당 아이콘 클릭시 edit, delete 기능을 수행할 수 있다.
 
-Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.
+캐시데이터를 활용해 호출을 최적화 할 수 있었으나 댓글을 작성하기 전에 다른 유저가 댓글을 작성할수도 있기에 이를 반영하기 위해 요청마다 해당 페이지의 댓글을 갱신하도록 구현했다.
 
-## Learn Once, Write Anywhere
+**Comments 호출 API**
 
-We don’t make assumptions about the rest of your technology stack, so you can develop new features in React without rewriting existing code.
+```jsx
 
-React can also render on the server using Node and power mobile apps using React Native.
+if (req.method === "GET") {
+  const {
+    query: { id, page },
+  } = req;
 
-![React Office desk](https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80)
+  const post = await client.post.findUnique({
+    where: {
+      id: +id!,
+    },
+    select: {
+      id: true,
+      _count: {
+        select: {
+          comments: true,
+        },
+      },
+    },
+  });
 
-> The most important addition in React 18 is something we hope you never have to think about: concurrency. We think this is largely true for application developers, though the story may be a bit more complicated for library maintainers.
+  if (post) {
+    const comments = await client.comment.findMany({
+      where: {
+        postId: +id!,
+      },
+      include: {
+        user: {
+          select: { avatar: true, id: true, name: true },
+        },
+      },
+      // pagination
+      take: 10,
+      skip: page ? (+page - 1) * 10 : 0,
+    });
+    return res.json({
+      ok: true,
+      comments,
+      totalComments: post._count.comments,
+    });
+  } else return res.status(401).send("Photo not exitst");
+}
+```
 
-Concurrency is not a feature, per se. It’s a new behind-the-scenes mechanism that enables React to prepare multiple versions of your UI at the same time. You can think of concurrency as an implementation detail — it’s valuable because of the features that it unlocks. React uses sophisticated techniques in its internal implementation, like priority queues and multiple buffering. But you won’t see those concepts anywhere in our public APIs.
+**Comments Edit**
 
-When we design APIs, we try to hide implementation details from developers. As a React developer, you focus on what you want the user experience to look like, and React handles how to deliver that experience. So we don’t expect React developers to know how concurrency works under the hood.
+![image](/images/happyhashImages/comments-3.png)
 
-However, Concurrent React is more important than a typical implementation detail — it’s a foundational update to React’s core rendering model. So while it’s not super important to know how concurrency works, it may be worth knowing what it is at a high level.
+Edit을 클릭하게 되면 edit을 위한 form이 나온다.  
+Cancel을 누르거나, 댓글의 내용이 변화하지 않았을때는 요청을 보내지 않도록 구현하였다.
 
-A key property of Concurrent React is that rendering is interruptible. When you first upgrade to React 18, before adding any concurrent features, updates are rendered the same as in previous versions of React — in a single, uninterrupted, synchronous transaction. With synchronous rendering, once an update starts rendering, nothing can interrupt it until the user can see the result on screen.
+### 8. Modal Post Routing
 
-In a concurrent render, this is not always the case. React may start rendering an update, pause in the middle, then continue later. It may even abandon an in-progress render altogether. React guarantees that the UI will appear consistent even if a render is interrupted. To do this, it waits to perform DOM mutations until the end, once the entire tree has been evaluated. With this capability, React can prepare new screens in the background without blocking the main thread. This means the UI can respond immediately to user input even if it’s in the middle of a large rendering task, creating a fluid user experience.
+글 목록 요청시 글 목록마다 세부사항에 대한 내용들이 일부 들어있도록 구현하였다.  
+글을 클릭시 props로 데이터를 보내면서 로딩없이 빠른 환경을 제공하기 위함이다.
 
-Another example is reusable state. Concurrent React can remove sections of the UI from the screen, then add them back later while reusing the previous state. For example, when a user tabs away from a screen and back, React should be able to restore the previous screen in the same state it was in before. In an upcoming minor, we’re planning to add a new component called `<Offscreen>` that implements this pattern. Similarly, you’ll be able to use Offscreen to prepare new UI in the background so that it’s ready before the user reveals it.
+이를 위해선 몇가지 과정이 필요한데 Next.js에서 제공하는 as, shallow props를 사용하여 해결했다.
 
-Concurrent rendering is a powerful new tool in React and most of our new features are built to take advantage of it, including Suspense, transitions, and streaming server rendering. But React 18 is just the beginning of what we aim to build on this new foundation.
+![image](/images/happyhashImages/post-modal-1.png)
+
+모바일뷰로 보면 바로 디테일 페이지로 접속하는것으로 보이지만, 실은 modal 형식으로 열린다.
+
+```jsx
+const onClickPostFeed = () => {
+  // Next.js 에서 제공하는 router,  순서대로 url, as, options
+  // Link 컴포넌트를 사용하면 렌더링 될때 성능 차이가 좀 있어 div 태그에 이벤트를 넣었습니다.
+  router.push(
+    {
+      pathname: router.pathname,
+      query: { postId: post.id, ...router.query },
+    },
+    {
+      pathname: router.pathname + `/${post.id}`,
+      query: { ...router.query },
+    },
+    {
+      shallow: true,
+      scroll: false,
+    }
+  );
+  setRecyclePostInfo({
+    title: post.title,
+    _count: post._count,
+    hashtag: post.hashtag,
+    id: post.id,
+    image: post.image,
+    likesNum: post.likesNum,
+    payload: post.payload,
+    user: {
+      avatar: post.user.avatar,
+      id: post.user.id,
+      name: post.user.name,
+    },
+    views: post.views,
+    createdAt: post.createdAt,
+  });
+};
+```
+
+postId는 query 형식으로 전달되지만 as 옵션과 shallow를 통해서 url을 꾸며준것이다.  
+원래 주소는 **/community/posts/468** 이 아닌 **/community?postId=468** 가 된다.
+
+```jsx
+function HashCommunity() {
+  const router = useRouter();
+  const {
+    query: { postId, comuId, hashId },
+  } = router;
+  const { data } = useSWR<ComuInfoForm>(
+    `/api/community?${comuId ? `comuId=${comuId}` : `hashId=${hashId}`}`
+  );
+
+  return
+    <>
+      {postId ? <PostModalDetail /> : null}
+      <Layout ...
+}
+```
+
+이렇게 postId라는 쿼리가 입력이 되면 modal 컴포넌트를 열게 된다.
+
+클릭시 recoil의 setsetRecyclePostInfo(useSetRecoilState)를 통해 내가 클릭한 Post의 데이터를 사용할 수 있다.
+
+새로고침, 링크로 해당 페이지를 방문할 경우 url의 표시처럼 페이지 이동을 하게 된다.  
+modal과 posts 디테일 페이지는 서로 컴포넌트를 공유하며, 디테일 페이지는 ssr로 구현하였다.
