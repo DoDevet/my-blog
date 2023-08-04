@@ -810,4 +810,4 @@ function HashCommunity() {
 클릭시 recoil의 setsetRecyclePostInfo(useSetRecoilState)를 통해 내가 클릭한 Post의 데이터를 사용할 수 있다.
 
 새로고침, 링크로 해당 페이지를 방문할 경우 url의 표시처럼 페이지 이동을 하게 된다.  
-modal과 posts 디테일 페이지는 서로 컴포넌트를 공유하며, 디테일 페이지는 ssr로 구현하였다.
+modal과 posts 디테일 페이지는 서로 컴포넌트를 공유하며, 디테일 페이지는 ssr로 동작한다.
