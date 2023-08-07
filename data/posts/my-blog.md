@@ -158,7 +158,7 @@ export const getPosts = cache(
 
 ## 개선안
 
-- Post Detail Toc 구현
+- [x] Post Detail Toc 구현
 - 고유 component는 app router 내부에 위치하도록 리팩토링
 - service 로직 개선
 

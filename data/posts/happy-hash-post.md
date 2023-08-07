@@ -412,7 +412,7 @@ useSwrInfinite 라이브러리와 scroll 이벤트를 사용하여 무한 스크
 
 ### 6. Post
 
-- #### 1. Create
+- #### Create
 
   ![image](/images/happyhashImages/post-crud-1.png)
 
@@ -551,7 +551,7 @@ useSwrInfinite 라이브러리와 scroll 이벤트를 사용하여 무한 스크
   });
   ```
 
-- #### 2. Read
+- #### Read
 
   ![image](/images/happyhashImages/post-crud-2.png)  
   글을 클릭시 조회수가 1 증가하며, 글의 내용과 댓글을 조회할 수 있다.  
@@ -562,7 +562,7 @@ useSwrInfinite 라이브러리와 scroll 이벤트를 사용하여 무한 스크
 
   디테일 페이지와 PostFeed 두곳에 mutate 기능을 사용함으로써 해시홈의 PostFeed에도 적용이 된다.
 
-- #### 3. Update
+- #### Update
 
   ![image](/images/happyhashImages/post-crud-3.png)
 
@@ -628,7 +628,7 @@ useSwrInfinite 라이브러리와 scroll 이벤트를 사용하여 무한 스크
   }
   ```
 
-- #### 4. Delete
+- #### Delete
 
   ![image](/images/happyhashImages/post-crud-4.png)
 
