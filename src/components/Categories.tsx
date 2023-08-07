@@ -22,10 +22,10 @@ const Categories = ({ categories }: CategoriesProps) => {
               <Link
                 href={index === 0 ? `/posts` : `/posts/categories/${category}`}
                 className={cls(
-                  "cursor-pointer hover:text-indigo-400 transition-colors",
+                  "cursor-pointer hover:text-violet-400 transition-colors",
                   pathname.includes(category) ||
                     (pathname === "/posts" && index === 0)
-                    ? "text-indigo-400"
+                    ? "text-violet-400"
                     : ""
                 )}
                 key={index}

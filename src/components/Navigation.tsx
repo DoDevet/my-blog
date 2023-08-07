@@ -21,11 +21,11 @@ export default function Navigation() {
               href={href}
               key={href}
               className={cls(
-                "transition-colors hover:text-indigo-400",
+                "transition-colors hover:text-violet-400",
                 index !== 0 && pathname.startsWith(href)
-                  ? "text-indigo-400"
+                  ? "text-violet-400"
                   : index === 0 && pathname === href
-                  ? "text-indigo-400"
+                  ? "text-violet-400"
                   : ""
               )}
             >

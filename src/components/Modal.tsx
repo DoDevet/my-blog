@@ -14,11 +14,11 @@ const Modal = () => {
             <Link
               key={href}
               className={cls(
-                "transition-colors hover:text-indigo-400 dark:hover:bg-[#28282c] p-2",
+                "transition-colors hover:text-violet-400 dark:hover:bg-[#28282c] p-2",
                 index !== 0 && pathname.startsWith(href)
-                  ? "text-indigo-400"
+                  ? "text-violet-400"
                   : index === 0 && pathname === href
-                  ? "text-indigo-400"
+                  ? "text-violet-400"
                   : ""
               )}
               href={href}
