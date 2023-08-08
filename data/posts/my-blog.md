@@ -156,9 +156,28 @@ export const getPosts = cache(
 );
 ```
 
+## 검색 엔진 등록
+
+[네이버 웹마스터](https://searchadvisor.naver.com/)  
+[구글 웹마스터](https://search.google.com/search-console/about?hl=ko)
+
+페이지 소유자 확인은 두가지 방법이 있다.
+
+1. 웹마스터에서 제공하는 html을 다운받아 root 폴더에 넣기
+2. meta 태그를 사용하여 인증
+
+Next.js에서 html 파일을 다뤄본적이 없고 app 폴더의 layout에서 html 태그를 사용하여 컨트롤 하던데, 문서대로 root 폴더에 넣어도 인식이 잘 되는지에 대한 의구심이 있어  
+좀 더 확실한 **meta 태그를 사용**하였다.
+
+- ### 구글 검색
+  ![image](/images/blogImages/search-engine-1.png)
+- ### 네이버 검색
+  ![image](/images/blogImages/search-engine-2.png)
+
 ## 개선안
 
-- [x] Post Detail Toc 구현
+- [x] Post Detail Toc 구현  
+       너비값이 1280px 미만이라면 보이지 않음
 - 고유 component는 app router 내부에 위치하도록 리팩토링
 - service 로직 개선
 
