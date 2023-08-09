@@ -23,7 +23,7 @@ const TableOfContents = () => {
   }, []);
   return (
     <section className="hidden px-2 ml-3 text-sm xl:block">
-      <ul className="fixed space-y-2 top-1/4">
+      <ul className="fixed space-y-2 top-36">
         {headings?.map((heading) => (
           <li
             key={heading.id}
