@@ -23,7 +23,7 @@ export default function CarouselPosts({
 }) {
   return (
     <Carousel
-      itemClass="px-1"
+      itemClass="px-2"
       className="py-2"
       autoPlaySpeed={5000}
       infinite
