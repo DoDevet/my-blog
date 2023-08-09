@@ -6,7 +6,7 @@ const Postcard = (post: Post) => {
   return (
     <div
       className="relative w-full transition-transform dark:bg-[#2d2d2f]
-bg-[#fffadb] rounded-sm shadow-md hover:scale-105 !overflow-hidden!"
+bg-[#fffadb] rounded-sm shadow-md hover:scale-105"
     >
       <Link href={`/posts/${post.path}`}>
         <Image
@@ -25,7 +25,7 @@ bg-[#fffadb] rounded-sm shadow-md hover:scale-105 !overflow-hidden!"
           <h2 className="text-sm text-center text-gray-600 dark:text-gray-300">
             {post.description}
           </h2>
-          <span className="px-2 py-1 text-xs text-white bg-indigo-400 rounded-full">
+          <span className="px-2 py-1 text-xs text-white truncate bg-indigo-400 rounded-full">
             {post.category}
           </span>
         </section>

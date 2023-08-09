@@ -4,16 +4,16 @@ import "react-multi-carousel/lib/styles.css";
 
 const responsive: ResponsiveType = {
   desktop: {
-    breakpoint: { max: 3000, min: 1537 },
+    breakpoint: { max: 3000, min: 768 },
     items: 3,
   },
   tablet: {
-    breakpoint: { max: 1536, min: 769 },
-    items: 3,
+    breakpoint: { max: 767, min: 640 },
+    items: 2,
   },
   mobile: {
-    breakpoint: { max: 768, min: 0 },
-    items: 2,
+    breakpoint: { max: 639, min: 0 },
+    items: 1,
   },
 };
 export default function CarouselPosts({
@@ -23,14 +23,14 @@ export default function CarouselPosts({
 }) {
   return (
     <Carousel
+      itemClass="px-1"
+      className="py-2"
       autoPlaySpeed={5000}
       infinite
       pauseOnHover
       renderButtonGroupOutside={true}
       containerClass="carousel-container"
-      className="space-x-3"
       responsive={responsive}
-      itemClass="px-1 py-3 w-full truncate"
     >
       {children}
     </Carousel>
