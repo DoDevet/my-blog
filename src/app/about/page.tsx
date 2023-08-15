@@ -14,7 +14,7 @@ const About = () => {
       <Profile />
       <section
         className="flex flex-col p-4 mt-10 space-y-12 dark:bg-[#26262b]
-bg-[#fff7cd] rounded-md"
+bg-slate-100 rounded-md"
       >
         <IntroduceForm
           title="Who am I"

@@ -33,7 +33,7 @@ const TableOfContents = () => {
           >
             <a
               href={`#${heading.id}`}
-              className="transition-colors hover:text-violet-400"
+              className="transition-colors hover:text-sky-500 dark:hover:text-violet-400"
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector(`#${heading.id}`)?.scrollIntoView({

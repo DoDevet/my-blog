@@ -36,7 +36,7 @@ export default function RootLayout({
           content="62ffeadf5d6fdc3b76b6be7cd03e54d3acc23686"
         />
       </head>
-      <body className="dark:bg-[#202023] dark:text-white py-2 text-gray-800 bg-[#fff9da] flex flex-col w-full justify-center items-center">
+      <body className="dark:bg-[#202023] dark:text-white py-2 text-gray-800 bg-slate-50 flex flex-col w-full justify-center items-center">
         <Providers>
           <Navigation />
           <main className="w-full max-w-5xl px-5 pt-20 grow">{children}</main>

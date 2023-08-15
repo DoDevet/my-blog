@@ -5,8 +5,8 @@ import Link from "next/link";
 const Postcard = (post: Post) => {
   return (
     <div
-      className="relative w-full transition-transform dark:bg-[#2d2d2f]
-bg-[#fffadb] rounded-sm shadow-md hover:scale-105"
+      className="relative w-full transition-transform dark:bg-[#2d2d2f] bg-white 
+ rounded-sm shadow-md hover:scale-105"
     >
       <Link href={`/posts/${post.path}`}>
         <Image
@@ -25,7 +25,7 @@ bg-[#fffadb] rounded-sm shadow-md hover:scale-105"
           <h2 className="text-sm text-center text-gray-600 dark:text-gray-300">
             {post.description}
           </h2>
-          <span className="px-2 py-1 text-xs text-white truncate bg-indigo-400 rounded-full">
+          <span className="px-2 py-1 text-xs text-white truncate bg-indigo-400 rounded-full dark:bg-violet-400">
             {post.category}
           </span>
         </section>

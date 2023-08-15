@@ -5,13 +5,17 @@ import DarkMode from "./DarkMode";
 import { usePathname } from "next/navigation";
 import { cls } from "@/libs/utils";
 import { router } from "@/constants";
-
+import { LiaBlogSolid } from "react-icons/lia";
 export default function Navigation() {
   const pathname = usePathname();
   return (
     <div className="fixed top-0 right-0 z-10 flex items-center justify-center w-full px-3 shadow-md md:px-32 backdrop-blur-lg">
       <div className="flex items-center justify-between w-full py-4 max-w-7xl">
-        <Link href="/" className="text-xl font-semibold hover:animate-pulse">
+        <Link
+          href="/"
+          className="flex items-center text-xl font-semibold group"
+        >
+          <LiaBlogSolid className="w-6 h-6 transition-transform group-hover:motion-safe:animate-bounce" />
           {`Jihun's Blog`}
         </Link>
 
@@ -21,11 +25,11 @@ export default function Navigation() {
               href={href}
               key={href}
               className={cls(
-                "transition-colors hover:text-violet-400",
+                "transition-colors dark:hover:text-violet-400 hover:text-sky-500",
                 index !== 0 && pathname.startsWith(href)
-                  ? "text-violet-400"
+                  ? "dark:text-violet-400 text-sky-500"
                   : index === 0 && pathname === href
-                  ? "text-violet-400"
+                  ? "dark:text-violet-400 text-sky-500"
                   : ""
               )}
             >
