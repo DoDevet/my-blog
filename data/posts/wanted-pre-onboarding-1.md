@@ -202,7 +202,7 @@ readme의 중요성, ESlint, prettier를 커스텀 하는 방법을 배웠다.
   ```
 
   ```bash
-  git commit -m ""
+  git commit -m "~"
   ```
 
   ```bash

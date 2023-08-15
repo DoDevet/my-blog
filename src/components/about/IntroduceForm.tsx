@@ -6,6 +6,7 @@ interface IntroduceProps {
   description?: string | string[];
   image?: string | StaticImageData | undefined;
   imageHeight?: number;
+  children?: React.ReactNode;
 }
 
 const IntroduceForm = ({
@@ -13,10 +14,16 @@ const IntroduceForm = ({
   description,
   image,
   imageHeight,
+  children,
 }: IntroduceProps) => {
   return (
-    <div className="mx-auto -space-y-1 text-center">
-      <h1 className="text-2xl font-semibold">{title}</h1>
+    <div
+      className={cls(
+        "mx-auto",
+        children !== undefined ? "w-full" : " -space-y-1 text-center"
+      )}
+    >
+      <h1 className="text-2xl font-semibold text-center">{title}</h1>
       {image && (
         <Image
           src={image}
@@ -32,6 +39,7 @@ const IntroduceForm = ({
       ) : (
         <p>{description}</p>
       )}
+      {children}
     </div>
   );
 };
