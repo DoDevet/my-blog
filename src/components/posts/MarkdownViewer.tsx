@@ -12,7 +12,7 @@ const MarkdownViewer = ({ content }: { content: string }) => {
   return (
     <>
       <motion.div
-        className="fixed left-0 right-0 h-1 origin-left bg-indigo-400 top-16 dark:bg-violet-400"
+        className="fixed left-0 right-0 h-1 origin-left bg-indigo-400 top-14 dark:bg-violet-400"
         style={{ scaleX: scrollYProgress }}
       />
       <ReactMarkdown
