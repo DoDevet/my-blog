@@ -1,5 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import useActiveToc from "@/hooks/useActiveToc";
+import { cls } from "@/libs/utils";
+import { useEffect, useRef, useState } from "react";
 
 interface IHeadings {
   text: string;
@@ -8,6 +10,8 @@ interface IHeadings {
 }
 const TableOfContents = () => {
   const [headings, setHeadings] = useState<IHeadings[]>();
+  const { activeId } = useActiveToc();
+  useActiveToc();
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll("h2, h3, h4")).map(
       (elem) => {
@@ -33,7 +37,12 @@ const TableOfContents = () => {
           >
             <a
               href={`#${heading.id}`}
-              className="transition-colors hover:text-sky-500 dark:hover:text-violet-400"
+              className={cls(
+                "transition-colors hover:text-sky-500 dark:hover:text-violet-400",
+                activeId === heading.id
+                  ? "text-sky-500 dark:text-violet-400"
+                  : ""
+              )}
               onClick={(e) => {
                 e.preventDefault();
                 document.querySelector(`#${heading.id}`)?.scrollIntoView({
