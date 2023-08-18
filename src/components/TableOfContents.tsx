@@ -1,7 +1,7 @@
 "use client";
 import useActiveToc from "@/hooks/useActiveToc";
 import { cls } from "@/libs/utils";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface IHeadings {
   text: string;

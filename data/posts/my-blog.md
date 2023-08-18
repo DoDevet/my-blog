@@ -166,24 +166,136 @@ export const getPosts = cache(
 1. 웹마스터에서 제공하는 html을 다운받아 root 폴더에 넣기
 2. meta 태그를 사용하여 인증
 
-Next.js에서 html 파일을 다뤄본적이 없고 app 폴더의 layout에서 html 태그를 사용하여 컨트롤 하던데, 문서대로 root 폴더에 넣어도 인식이 잘 되는지에 대한 의구심이 있어  
-좀 더 확실한 **meta 태그를 사용**하였다.
+2번이 간단하다고 생각해 meta 태그를 적용하였다.
 
 - ### 구글 검색
   ![image](/images/blogImages/search-engine-1.png)
 - ### 네이버 검색
   ![image](/images/blogImages/search-engine-2.png)
 
+## ToC Highlighter
+
+![image](/images/blogImages/toc-1.png)
+
+너비값이 1280px 미만이면 toc가 보이지 않도록 구현하였다.
+
+- ### useActiveToc
+
+  IntersectionObserver를 통해 중앙에 스쳐지나간 h2, h3, h4 태그의 id를 저장하는 훅이다.
+
+  ```jsx
+  // src/hooks/useActiveToc.ts
+  export default function useActiveToc() {
+    const observer = useRef<IntersectionObserver>();
+
+    const [activeId, setActiveId] = useState("");
+
+    useEffect(() => {
+      const handleObsever = (entries: IntersectionObserverEntry[]) => {
+        entries.forEach((entry) => {
+          if (entry?.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      };
+
+      observer.current = new IntersectionObserver(handleObsever, {
+        rootMargin: "-45% 0% -45% 0%",
+      });
+
+      const elements = document.querySelectorAll("h2, h3, h4");
+      elements.forEach((elem) => observer?.current?.observe(elem));
+      return () => observer.current?.disconnect();
+    }, []);
+
+    return { activeId };
+  }
+  ```
+
+- ### TableOfContents
+
+  useEffect를 통해 첫 렌더링시 페이지에 있는 h2,h3,h4 태그들을 가져와 id, text, level을 설정한다.
+
+  useActiveToc 훅에서 받아온 activeId를 통해서 Toc 요소의 색상을 바꿔주었다.
+
+  목차 클릭 시 scrollIntoView 이벤트를 통해 해당 태그로 이동할 수 있게 해주었다.
+
+  ```jsx
+  // src/components/TableOfContents.tsx
+  "use client";
+  import useActiveToc from "@/hooks/useActiveToc";
+  import { cls } from "@/libs/utils";
+  import { useEffect, useState } from "react";
+
+  interface IHeadings {
+    text: string;
+    level: string;
+    id: string;
+  }
+  const TableOfContents = () => {
+    const [headings, setHeadings] = useState<IHeadings[]>();
+    const { activeId } = useActiveToc();
+    useActiveToc();
+    useEffect(() => {
+      const elements = Array.from(document.querySelectorAll("h2, h3, h4")).map(
+        (elem) => {
+          // 에러 방지를 위해 숫자를 제거하여 id에 반영함.
+          elem.id = elem.innerHTML.replaceAll(/[0-9. ]/g, "");
+          return {
+            id: elem.id,
+            text: elem.innerHTML,
+            level: elem.nodeName.charAt(1),
+          };
+        }
+      );
+      setHeadings(elements);
+    }, []);
+    return (
+      <section className="hidden px-2 ml-3 text-sm xl:block">
+        <ul className="fixed space-y-2 top-36">
+          {headings?.map((heading) => (
+            <li
+              key={heading.id}
+              className={`${heading.level === "3" && "ml-2"} ${
+                heading.level === "4" && "ml-6 list-inside list-disc"
+              }`}
+            >
+              <a
+                href={`#${heading.id}`}
+                className={cls(
+                  "transition-colors hover:text-sky-500 dark:hover:text-violet-400",
+                  activeId === heading.id
+                    ? "text-sky-500 dark:text-violet-400"
+                    : ""
+                )}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector(`#${heading.id}`)?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center",
+                    inline: "nearest",
+                  });
+                }}
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
+  };
+  export default TableOfContents;
+  ```
+
 ## 개선안
 
-- [x] Post Detail Toc 구현  
-       너비값이 1280px 미만이라면 보이지 않음
 - 고유 component는 app router 내부에 위치하도록 리팩토링
 - service 로직 개선
 
 ## 후기
 
-[디자인을 참고한 블로그](https://www.craftz.dog/)  
+[디자인을 참고한 블로그](https://www.craftz.dog/)
 [카테고리 구현에 아이디어를 준 블로그](https://www.braydoncoyer.dev/)
 
 렌더링 기준이 변경되어 서버측에서 처리해야할 로직들을 좀 더 구체적으로 구분해야할 필요성을 느꼈다.

@@ -1,9 +1,7 @@
-import { Aclonica } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 
 export default function useActiveToc() {
   const observer = useRef<IntersectionObserver>();
-
   const [activeId, setActiveId] = useState("");
 
   useEffect(() => {
