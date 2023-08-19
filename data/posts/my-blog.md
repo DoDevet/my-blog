@@ -235,7 +235,6 @@ export const getPosts = cache(
   const TableOfContents = () => {
     const [headings, setHeadings] = useState<IHeadings[]>();
     const { activeId } = useActiveToc();
-    useActiveToc();
     useEffect(() => {
       const elements = Array.from(document.querySelectorAll("h2, h3, h4")).map(
         (elem) => {

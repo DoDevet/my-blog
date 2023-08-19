@@ -21,7 +21,10 @@ bg-slate-100 rounded-md"
           title="Who am I"
           description={["풀스택 개발자를 목표로 공부하고 있는 도지훈 입니다."]}
         />
-        <IntroduceForm title="Career" description={["강남대학교 소프트웨어공학부", "정보처리기사"]} />
+        <IntroduceForm
+          title="Career"
+          description={["강남대학교 소프트웨어공학부", "정보처리기사"]}
+        />
         <IntroduceForm title="Skills">
           <div className="grid gap-8 px-2 py-4 md:grid-cols-3 sm:grid-cols-2 max-h-fit">
             <div className="text-blue-400">
@@ -44,6 +47,9 @@ bg-slate-100 rounded-md"
             </div>
             <div className="text-orange-400">
               <h1 className="mb-2 text-xl font-bold text-center">접해봄</h1>
+              <p>C</p>
+              <p>C++</p>
+              <p>JAVA</p>
               <p>MongoDB</p>
             </div>
           </div>
