@@ -29,6 +29,9 @@
 3. 공통 헤더
    - 두 페이지는 공통 헤더를 공유합니다.
    - 헤더에는 Organization Name / Repository Name이 표시됩니다.
+4. 와이어 프레임
+
+- ![image](/images/wanted/wanted-pre-onboarding-3_5.png)
 
 ### 요구 사항
 
