@@ -550,6 +550,9 @@ npm i && npm start
 
 ## 후기
 
+[Github 링크](https://github.com/pre-onboarding-11th-5/pre-onboarding-11th-3-5)  
+[배포 사이트](https://pre-onboarding-11th-3-5-fork.vercel.app/)
+
 1주차와는 다르게 Git에 대해 나름대로 학습을 했기 때문에 회의 시간에 적극적으로 참여할 수 있었다.  
 또, 뛰어난 동료의 코드를 보고 기초적인 부분에서 상당히 많은것들을 배울 수 있었다.
 
