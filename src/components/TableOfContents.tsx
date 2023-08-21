@@ -11,11 +11,11 @@ interface IHeadings {
 const TableOfContents = () => {
   const [headings, setHeadings] = useState<IHeadings[]>();
   const { activeId } = useActiveToc();
-  useActiveToc();
+
   useEffect(() => {
     const elements = Array.from(document.querySelectorAll("h2, h3, h4")).map(
       (elem) => {
-        elem.id = elem.innerHTML.replaceAll(/[0-9. ]/g, "");
+        elem.id = elem.innerHTML.replaceAll(/[0-9. ()]/g, "");
         return {
           id: elem.id,
           text: elem.innerHTML,
