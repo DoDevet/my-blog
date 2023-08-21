@@ -85,23 +85,475 @@ Redux의 어려움,이틀내로 구현해야 하는 부담감, Context API로도
 
   Happy hash 프로젝트의 image upload 기능에서 cURL을 보고 fetch로 요청을 보냈던 경험이 있어 무리없이 구현할 수 있었고 이 방식을 공유하였다.
 
+  Issue List 마다 issue Detail 내용이 있기에 **issue Detail 요청은 요청한 Issue List를 필터링** 하는 형식으로 구현하기로 했다.
+
 - ### 파일트리
 
-- ### 페이지 디테일
-  issueList 안에 body 정보(페이지 디테일)가 있었기에 issueList에 대한 API를 불러와서 디테일페이지를 채우는 식으로 결정했다.
+  ```bash
+  src
+  ┣ apis
+  ┃ ┣ axiosInstance.ts
+  ┃ ┗ getIssueList.ts
+  ┣ components
+  ┃ ┣ IssueDetail
+  ┃ ┃ ┣ Content.tsx
+  ┃ ┃ ┗ index.tsx
+  ┃ ┣ IssueList
+  ┃ ┃ ┣ Advertisement.tsx
+  ┃ ┃ ┗ index.tsx
+  ┃ ┗ common
+  ┃ ┃ ┣ Error.tsx
+  ┃ ┃ ┣ Header.tsx
+  ┃ ┃ ┣ IssueItem.tsx
+  ┃ ┃ ┗ Loading.tsx
+  ┣ constants
+  ┃ ┗ common.ts
+  ┣ contexts
+  ┃ ┗ issueContext.ts
+  ┣ pages
+  ┃ ┣ DetailPage.tsx
+  ┃ ┣ Layout.tsx
+  ┃ ┗ ListPage.tsx
+  ┣ types
+  ┃ ┗ issue.ts
+  ┣ App.css
+  ┣ App.test.tsx
+  ┣ App.tsx
+  ┣ index.css
+  ┣ index.tsx
+  ┣ logo.svg
+  ┣ react-app-env.d.ts
+  ┣ reportWebVitals.ts
+  ┗ setupTests.ts
+  ```
+
+- ### 무한 스크롤
+
+  intersectionObserver API를 사용하여 무한 스크롤을 구현하기로 하였다.  
+  무한스크롤은 지금까지 브라우저에서 제공하는 scroll API를 사용하여 구현해왔기 때문에 흥미로웠다.
+
+- ### 마크다운 라이브러리
+  API로 불러온 detail 데이터들은 마크다운 형식으로 날아오기 때문에 라이브러리 선택이 필수였다.  
+  내가 아는 markdown 라이브러리는 gray matter가 유일하였지만 각종 플러그인들을 사용할 수 있는 react markdown 이라는 라이브러리를 알게 되었고 이를 사용하기로 하였다.
 
 ## 문제
 
-회의가 끝나고 곰곰히 생각해보니 페이지 디테일쪽 로직에 문제가 있다는걸 알게 되었다.  
+회의가 끝나고 곰곰히 생각해보니 Issue Detail의 로직에 문제가 있다는걸 알게 되었다.  
 이슈 리스트에서 디테일 정보를 받아오게 된다면 새로고침, URL 접속시 불러왔던 issueList가 전부 날아가버리는 문제를 뒤늦게 알아차렸고  
 페이지 디테일을 불러오는 Get an issue API 사용이 필요하다는것을 팀원들에게 알렸다.
 
-아무래도 장시간 교육을 받고 바로 과제에 대한 토론을 하려다 보니 다들 정신이 없었던 거 같다.  
-localStorage를 통해서 불러온 Issue List를 저장하자는 의견도 나왔지만, 클라이언트에 저장하게 되는것이므로  
-클라이언트마다 접속 가능한 페이지가 달라지기 때문에 이슈 디테일 페이지를 링크로 공유하게 된다면 같은 문제가 일어날것이기 때문에  
-결국 Get an issue API를 사용하는 방향으로 정해졌다.
+localStorage를 통해서 불러온 Issue List를 저장하자는 의견도 나왔지만, 클라이언트마다 접속 가능한 페이지가 달라진다.  
+접근한적이 없는 이슈 디테일 페이지를 링크로 공유하게 된다면 같은 문제가 일어날것이기 때문에 결국 Get an issue API를 사용하는 방향으로 정해졌다.
 
 Context API의 Provider와 이로인한 파일트리의 구조 변경에 대해 다시 의논해야 할 필요성을 느꼈지만  
-다시 회의를 하기엔 시간이 늦기도 하였고 구현 시간과 코드 병합을 고려하면 시간이 없었기에 이부분에 대해선 각자 구현하는것으로 마무리 되었다.
+다시 회의를 하기엔 시간이 늦기도 하였고 구현 시간과 코드 병합의 과정을 고려한다면 시간이 없었기에 이부분에 대해선 각자 구현하는것으로 마무리 되었다.
 
 ## 구현
+
+```bash
+git clone https://github.com/pre-onboarding-11th-5/pre-onboarding-11th-3-5.git
+
+cd pre-onboarding-11th-3-5
+
+git reset --hard 358ce5c0cd4fa964bb4de4c59c12b0191f9e66eb
+
+npm i && npm start
+```
+
+[Github](https://github.com/pre-onboarding-11th-5/pre-onboarding-11th-3-5/tree/dodevet)
+
+![image](/images/posts/wanted-pre-onboarding-3.png)
+
+![image](/images/wanted/wanted-pre-onboarding-3_6.png)
+
+- ### 구조
+
+  ```bash
+  src
+  ┣ apis
+  ┃ ┣ axiosInstance.ts
+  ┃ ┗ getIssueList.ts
+  ┣ components
+  ┃ ┣ IssueDetail
+  ┃ ┃ ┣ Content.tsx
+  ┃ ┃ ┗ index.tsx
+  ┃ ┣ IssueList
+  ┃ ┃ ┣ Advertisement.tsx
+  ┃ ┃ ┗ index.tsx
+  ┃ ┗ common
+  ┃ ┃ ┣ Error.tsx
+  ┃ ┃ ┣ Header.tsx
+  ┃ ┃ ┣ IssueItem.tsx
+  ┃ ┃ ┗ Loading.tsx
+  ┣ constants
+  ┃ ┗ common.ts
+  ┣ contexts
+  ┃ ┗ issueContext.tsx
+  ┣ pages
+  ┃ ┣ DetailPage.tsx
+  ┃ ┣ Layout.tsx
+  ┃ ┗ ListPage.tsx
+  ┣ types
+  ┃ ┗ issue.ts
+  ┣ App.css
+  ┣ App.tsx
+  ┣ index.tsx
+  ┗ react-app-env.d.ts
+  ```
+
+- ### API 요청 기능
+
+  ```jsx
+  const IssueStateContext = createContext<IssueState>({
+    data: null,
+    loading: false,
+    error: null,
+  });
+  const IssueDispatchContext = createContext<{ (): void } | null>(null);
+
+  const IssueDetailStateContext = createContext<DetailIssueState>({
+    data: null,
+    loading: false,
+    error: null,
+  });
+
+  const IssueDetailDispatchContext = createContext<{ (id: string): void } | null>(
+    null,
+  );
+
+  export const useIssue = () => useContext(IssueStateContext);
+  export const useIssueDispatch = () => useContext(IssueDispatchContext);
+  export const useIssueDetail = () => useContext(IssueDetailStateContext);
+  export const useIssueDetailDIspatch = () =>
+    useContext(IssueDetailDispatchContext);
+
+  const IssueProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
+    const [data, setData] = useState<IssueState>({
+      data: null,
+      loading: false,
+      error: null,
+    });
+    const [detailData, setDetailData] = useState<DetailIssueState>({
+      data: null,
+      loading: false,
+      error: null,
+    });
+
+    const [page, setPage] = useState(1);
+    const [endPage, setEndPage] = useState(false);
+
+    const dispatchIssue = () => {
+      if (endPage) return;
+      setData((prev) => ({ ...prev, loading: true }));
+      client({ params: { page, per_page: 30, sort: "comments" } })
+        .then((res) => res.data)
+        .then((data) =>
+          setData((prev) => {
+            if (data.length !== 30) setEndPage(true);
+            return {
+              ...prev,
+              data: prev.data ? [...prev.data, ...data] : [...data],
+            };
+          }),
+        )
+        .catch((e) => setData((prev) => ({ ...prev, error: e })))
+        .finally(() => setData((prev) => ({ ...prev, loading: false })));
+      setPage((prev) => prev + 1);
+    };
+
+    const dispatchDetailIssue = (id: string) => {
+      setDetailData((prev) => ({ ...prev, error: null, loading: true }));
+      client
+        .get(id)
+        .then((res) => res.data)
+        .then((data) =>
+          setDetailData((prev) => ({
+            ...prev,
+            data,
+          })),
+        )
+        .catch((e) =>
+          setDetailData((prev) => ({ ...prev, data: null, error: e })),
+        )
+        .finally(() => setDetailData((prev) => ({ ...prev, loading: false })));
+    };
+
+    return (
+      <IssueStateContext.Provider value={data}>
+        <IssueDispatchContext.Provider value={dispatchIssue}>
+          <IssueDetailDispatchContext.Provider value={dispatchDetailIssue}>
+            <IssueDetailStateContext.Provider value={detailData}>
+              {children}
+            </IssueDetailStateContext.Provider>
+          </IssueDetailDispatchContext.Provider>
+        </IssueDispatchContext.Provider>
+      </IssueStateContext.Provider>
+    );
+  };
+
+  export default IssueProvider;
+
+  ```
+
+- ### 홈페이지(무한 스크롤 및 광고)
+
+  ```jsx
+  function IssueList() {
+    const pageEnd = useRef < HTMLDivElement > null;
+    const { data, loading, error } = useIssue();
+    const dispatch = useIssueDispatch();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+      // 무한 스크롤
+      if (!error && dispatch && pageEnd.current) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(
+            (entry) => {
+              if (entry.isIntersecting && !loading) {
+                dispatch();
+              }
+            },
+            { threshold: 0.7 }
+          );
+        });
+        observer.observe(pageEnd.current);
+      }
+    }, [dispatch, error, loading]);
+
+    return (
+      <Container>
+        {error ? (
+          <div>Error</div>
+        ) : (
+          data?.map((issue, index) => (
+            <section key={issue?.number}>
+              <List
+                style={{
+                  borderBottom:
+                    (index + 1) % 4 === 0 ? "0px" : "1px solid gray",
+                }}
+                onClick={() => navigate(`/${issue?.number}`)}
+              >
+                <IssueItem
+                  comments={issue?.comments}
+                  title={issue?.title}
+                  createdAt={issue?.created_at}
+                  login={issue?.user?.login}
+                  number={issue?.number}
+                />
+              </List>
+              {(index + 1) % 4 === 0 && <Advertisement />} // 광고
+            </section>
+          ))
+        )}
+        {loading ? <Loading /> : <div ref={pageEnd} />}
+      </Container>
+    );
+  }
+
+  export default IssueList;
+  ```
+
+- ### 디테일 페이지
+
+  ```jsx
+  function IssueDetail() {
+    const location = useLocation();
+    const { data, loading, error } = useIssueDetail();
+    const dispatch = useIssueDetailDIspatch();
+    const diffPage = data?.number !== +location.pathname.replace(/[^0-9]/, "");
+
+    const callbackDispatch = useCallback(
+      (pathname: string) => {
+        if (dispatch && !loading) dispatch(pathname);
+      },
+      [dispatch, loading]
+    );
+
+    useEffect(() => {
+      if (!error && (diffPage || !data)) {
+        callbackDispatch(location.pathname);
+      }
+    }, [callbackDispatch, diffPage, data, location.pathname, error]);
+
+    return (
+      <IssueDetailContainer>
+        {error ? (
+          <div>Error</div>
+        ) : loading || diffPage ? (
+          <Loading />
+        ) : (
+          <Items>
+            <IssueItem
+              comments={data.comments}
+              createdAt={data.created_at}
+              login={data.user.login}
+              number={data.number}
+              title={data.title}
+              avatar={data.user.avatar_url}
+            />
+            <Content body={data.body} />
+          </Items>
+        )}
+      </IssueDetailContainer>
+    );
+  }
+  export default IssueDetail;
+  ```
+
+## 2차 회의
+
+해당주차 목요일 오후 5시까지 각자 구현하고, 병합을 위한 회의를 진행하기로 했다.
+
+약속한 시간까지 완전히 구현한 사람은 나와 팀원 한 분 뿐이였다.  
+그 팀원분의 파일구조와 코드는 매우 정갈하고 깔끔했다.
+
+그에 비해 나의 결과물은 요구사항만을 맞춰 어떻게든 돌아가게 만든것일 뿐  
+잘못된 Context API, useCallBack 사용, 난잡한 코드구조 등 비교를 통해 많은 문제를 알게 되었다.
+
+## 병합
+
+완전히 구현한 사람은 2명밖에 없고 내 코드는 너무 지저분하였기에  
+결국 1주차와 비슷하게 한 사람의 코드를 클론하여 각자 기능을 보완하기로 하였다.
+
+## Best Practice
+
+- **IssueList, an issue context (관심사 분리)**  
+  issue list context와 issue context를 다른 파일로 분리하고 Provider도 분리하여 관심사 분리
+- **Issue context 내부에서 useParam id관리**  
+  이슈 번호를 url의 path variable로 받아와서 issue context의 초기 데이터 로딩에 사용
+- **useInfiniteIssue**  
+  무한 스크롤을 위해 다음 페이지 데이터를 가져오는 로직을 커스텀 훅으로 분리
+- **avatar 이미지 layout shift**
+
+## 나의 Best Practice
+
+- **Issue 컴포넌트 react.memo 최적화**  
+  Issue List를 불러올때 각각의 Issue 컴포넌트들이 리렌더링 됨으로  
+  Issue 컴포넌트를 메모이제이션을 함으로써 렌더링 성능을 개선했다.
+
+- **Issue Detail api 호출 최적화**
+
+  [Happy Hash 프로젝트](https://jihuns-blog.vercel.app/posts/happy-hash-post)에서 **Post Modal Routing** 구현과 **로딩없는 즉각적인 피드백**을 구현하기 위해  
+   **게시글 목록을 불러오는 API**에 **각각의 게시물 body 정보**를 포함하여 보낸적이 있었다.
+
+  Github API의 Issue List 요청에도 Issue Detail에 대한 정보들이 들어있는 비슷한 구조에  
+   **React**는 SPA 특성상 페이지 이동시 **state**로 특정값을 보낼 수 있다.
+
+  ![image](https://file.notion.so/f/s/f56e7423-04af-4e38-82f5-6b5535f74596/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-2023-07-14-%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE-12.36.40.gif?id=b038f6b5-a16c-4ca2-bdee-0ee0f51487e5&table=block&spaceId=7ac0bf59-e3bb-4f76-a93b-27f040ec55b6&expirationTimestamp=1692691200000&signature=TPZVrO02xTKnFg3dX5U3i_gL26YoNT9qLIDcv5ebBd0)
+
+  이를 통해 이슈 리스트에서 이슈 클릭시 해당 이슈의 body 정보를 재사용하여 Get an issue api 호출을 방지할 수 있었다.  
+  새로고침, 링크로 접속하여 state 정보가 없을때에만 api 호출을 하도록 구현하여 API 호출 횟수를 줄일 수 있도록 개선하였다.
+
+  - State 저장
+
+  ```jsx
+  function IssueList() {
+    const { data, error, loading, hasNextPage } = useIssueList();
+    const fetchNextPage = useIssueListDispatch();
+    const observeTargetRef = useInfiniteIssue<HTMLDivElement>();
+
+    return (
+      <IssueListBox>
+        {data.flatMap((issue, index) => {
+          const nodes = [
+            <li key={issue.number}>
+              <Link to={`/${issue.number}`} state={issue}> // Issue 데이터 state로 보냄
+                <IssueItem
+                  comments={issue.comments}
+                  number={issue.number}
+                  title={issue.title}
+                  created_at={issue.created_at}
+                  login={issue.user.login}
+                />
+              </Link>
+            </li>,
+          ];
+          const isAdvertisement = (index + 1) % 4 === 0;
+          isAdvertisement &&
+            nodes.push(
+              <li key={`ad#${index}`}>
+                <Advertisement />
+              </li>,
+            );
+          return nodes;
+        })}
+        <div ref={hasNextPage && !error ? observeTargetRef : null}></div>
+        <Error error={error} refetch={fetchNextPage} />
+        <Loading loading={loading} />
+      </IssueListBox>
+    );
+  }
+  ```
+
+  - Post Detail 처리
+
+  ```jsx
+  const IssueDetailProvider: React.FC<React.PropsWithChildren> = ({
+    children,
+  }) => {
+    const { state: issue } = useLocation();
+    const [data, setData] =
+      useState <
+      IssueDetailState >
+      {
+        data: issue,
+        loading: issue ? false : true,
+        error: null,
+      };
+    const { id } = useParams();
+
+    const fetchIssueDetail = useCallback(async () => {
+      if (!id || isNaN(parseInt(id))) {
+        setData((prev) => ({ ...prev, error: { message: "Invalid id" } }));
+        return;
+      }
+      try {
+        setData((prev) => ({ ...prev, loading: true, error: null }));
+        const { data } = await getIssue(parseInt(id));
+        setData((prev) => ({ ...prev, data }));
+      } catch (e) {
+        if (isAxiosError < ErrorResponse > e && e.response) {
+          const {
+            data: { message },
+          } = e.response;
+          setData((prev) => ({
+            ...prev,
+            error: { message },
+          }));
+        } else if (isAxiosError(e)) {
+          const { message } = e;
+          setData((prev) => ({
+            ...prev,
+            error: { message },
+          }));
+        }
+      } finally {
+        setData((prev) => ({ ...prev, loading: false }));
+      }
+    }, [id]);
+
+    useEffect(() => {
+      if (!data.data) fetchIssueDetail();
+    }, [fetchIssueDetail, data.data]);
+
+    return (
+      <IssueDetailStateContext.Provider value={data}>
+        <IssueDetailDispatchContext.Provider value={fetchIssueDetail}>
+          {children}
+        </IssueDetailDispatchContext.Provider>
+      </IssueDetailStateContext.Provider>
+    );
+  };
+  ```
+
+## 후기
+
+1주차와는 다르게 Git에 대해 나름대로 학습을 했기 때문에 회의 시간에 적극적으로 참여할 수 있었다.  
+또, 뛰어난 동료의 코드를 보고 기초적인 부분에서 상당히 많은것들을 배울 수 있었다.
+
+내가 제시한 아이디어들이 좋은 평가를 받은것에 대해 뿌듯함을 느꼈고,  
+만드는 과정에서도 동료의 피드백 덕분에 간결하고 좋은 코드를 빠르게 작성할 수 있었다.
+
+처음에는 부담스럽게 생각했던 동료 학습의 과정이 상당히 유익했고 재밌었다.
