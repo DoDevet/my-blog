@@ -16,7 +16,7 @@
 
   버튼이라는 컴포넌트를 만든다면 components/Button/index.tsx, 이런식으로 구현을 한다.
 
-  이를통해 Next.js 프레임워크에(Page Router)의 페이지 생성 방식은 React 프로젝트에서 자주 사용하는 파일구조에 영감을 얻었다는것을 알 수 있었다.
+  이를통해 Next.js 프레임워크(Page Router)의 페이지 생성 방식은 React 프로젝트에서 자주 사용하는 파일구조에 영감을 얻었다는것을 알 수 있었다.
 
 - ### Context API
 

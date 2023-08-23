@@ -1,7 +1,8 @@
 > 해당 프로젝트는 Github의 중요성에 대해 인지하지 못한 상태로 시작하여  
 > 최소한의 컨벤션도 없이 단순 백업용으로 아무렇게나 작성한 커밋 내역이 많이 있습니다.  
-> 또, 레거시가 된 라이브러리들을 사용하고 있어 졸업작품 보고서 작성시 제출했던 PDF 링크로 대체합니다.
+> 졸업작품 보고서에는 백엔드 구축에 대한 내용이 없어 백엔드 github 링크와 PDF로 대체합니다.
 
+[Strand-Backend](https://github.com/DoDevet/strand-backend)  
 [PDF 링크](https://sae.kangnam.ac.kr/comm/cmnFile/download.do?encFileGrpSeq=4f774a85ee1c244fb2d7942c12bb1e79&encFileSeq=c3bdef1247f09487f2e42c3026e536b0)
 
 ## 소개
