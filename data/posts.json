@@ -70,8 +70,19 @@
     "image": "/images/posts/wanted-pre-onboarding-4.png",
     "featured": false
   },
+
   {
     "id": "8",
+    "title": "React with Typescript",
+    "description": "리액트 공부",
+    "category": "React",
+    "date": "2023-08-23",
+    "path": "react-study",
+    "image": "/images/react-study/react-study.png",
+    "featured": false
+  },
+  {
+    "id": "9",
     "title": "Second Posts",
     "description": "Test",
     "category": "Any",
