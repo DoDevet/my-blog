@@ -17,12 +17,12 @@ export default function PostContent({
 }: IPostContent) {
   return (
     <section>
-      <h1 className="mb-1 text-4xl font-bold">{title}</h1>
+      <h1 className="mb-1 text-2xl font-bold md:text-4xl">{title}</h1>
       <div className="flex items-center justify-between w-full">
-        <p className="text-xl text-gray-600 dark:text-gray-300">
+        <p className="text-sm text-gray-600 sm:text-lg md:text-xl dark:text-gray-300">
           {description}
         </p>
-        <div className="flex items-center justify-end space-x-3 font-semibold text-gray-500 dark:text-gray-300 ">
+        <div className="flex items-center justify-end space-x-2 text-sm font-semibold text-gray-500 sm:text-base dark:text-gray-300 ">
           <AiTwotoneCalendar />
           <p>{date.toString()}</p>
         </div>
