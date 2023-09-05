@@ -83,6 +83,26 @@
   },
   {
     "id": "9",
+    "title": "Vanilla JS로 SPA 구현",
+    "description": "JS 공부",
+    "category": "Javascript",
+    "date": "2023-09-06",
+    "path": "second-post",
+    "image": "/images/profile.png",
+    "featured": false
+  },
+  {
+    "id": "10",
+    "title": "Redux",
+    "description": "상태관리 공부",
+    "category": "Redux",
+    "date": "2023-09-06",
+    "path": "second-post",
+    "image": "/images/profile.png",
+    "featured": false
+  },
+  {
+    "id": "11",
     "title": "Second Posts",
     "description": "Test",
     "category": "Any",

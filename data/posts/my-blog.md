@@ -291,6 +291,9 @@ export const getPosts = cache(
 
 - 고유 component는 app router 내부에 위치하도록 리팩토링
 - service 로직 개선
+- DB 연동
+  - 현재 블로그는 임의로 json 파일을 만들어 데이터를 받아온다.
+  - 조회수, 댓글 작성 기능 제작
 
 ## 후기
 
