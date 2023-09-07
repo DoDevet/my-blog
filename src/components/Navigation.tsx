@@ -16,7 +16,7 @@ export default function Navigation() {
           className="flex items-center text-xl font-semibold group"
         >
           <LiaBlogSolid className="w-6 h-6 transition-transform group-hover:motion-safe:animate-bounce" />
-          {`Jihun's Blog`}
+          <p className="pr-4 whitespace-nowrap"> {`Jihun's Blog`}</p>
         </Link>
 
         <ul className="hidden space-x-7 md:block">
