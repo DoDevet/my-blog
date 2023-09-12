@@ -40,7 +40,9 @@ export default function RootLayout({
         <Providers>
           <Navigation />
           <main className="w-full max-w-5xl px-5 pt-20 grow">{children}</main>
-          <footer className="pt-4 text-sm text-gray-400">© 2023 DoDevet</footer>
+          <footer className="pt-4 text-sm text-gray-400 whitespace-nowrap">
+            © 2023 DoDevet
+          </footer>
         </Providers>
       </body>
     </html>
