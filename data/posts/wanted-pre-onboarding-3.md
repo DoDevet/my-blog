@@ -451,7 +451,7 @@ npm i && npm start
   Github API의 Issue List 요청에도 Issue Detail에 대한 정보들이 들어있는 비슷한 구조에  
    **React**는 SPA 특성상 페이지 이동시 **state**로 특정값을 보낼 수 있다.
 
-  ![image](https://file.notion.so/f/s/f56e7423-04af-4e38-82f5-6b5535f74596/%E1%84%92%E1%85%AA%E1%84%86%E1%85%A7%E1%86%AB-%E1%84%80%E1%85%B5%E1%84%85%E1%85%A9%E1%86%A8-2023-07-14-%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE-12.36.40.gif?id=b038f6b5-a16c-4ca2-bdee-0ee0f51487e5&table=block&spaceId=7ac0bf59-e3bb-4f76-a93b-27f040ec55b6&expirationTimestamp=1692691200000&signature=TPZVrO02xTKnFg3dX5U3i_gL26YoNT9qLIDcv5ebBd0)
+  ![image](/images/wanted/best-practice.gif)
 
   이를 통해 이슈 리스트에서 이슈 클릭시 해당 이슈의 body 정보를 재사용하여 Get an issue api 호출을 방지할 수 있었다.  
   새로고침, 링크로 접속하여 state 정보가 없을때에만 api 호출을 하도록 구현하여 API 호출 횟수를 줄일 수 있도록 개선하였다.

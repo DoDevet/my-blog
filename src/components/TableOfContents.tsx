@@ -26,8 +26,8 @@ const TableOfContents = () => {
     setHeadings(elements);
   }, []);
   return (
-    <section className="hidden px-2 ml-3 text-sm xl:block">
-      <ul className="fixed space-y-2 top-36">
+    <section className="sticky hidden px-2 ml-3 text-sm top-32 xl:block">
+      <ul className="absolute space-y-2 -right-52">
         {headings?.map((heading) => (
           <li
             key={heading.id}

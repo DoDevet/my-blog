@@ -6,15 +6,18 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Image from "next/image";
 import { useScroll, motion } from "framer-motion";
+import TableOfContents from "../TableOfContents";
 const MarkdownViewer = ({ content }: { content: string }) => {
   const { scrollYProgress } = useScroll();
-
   return (
     <>
       <motion.div
         className="fixed left-0 right-0 h-1 origin-left bg-sky-300 top-14 dark:bg-violet-300"
         style={{ scaleX: scrollYProgress }}
       />
+
+      <TableOfContents />
+
       <ReactMarkdown
         className="min-w-full prose max-w-min prose-neutral dark:prose-invert"
         remarkPlugins={[remarkGfm]}
