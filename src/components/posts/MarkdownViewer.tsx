@@ -7,6 +7,7 @@ import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Image from "next/image";
 import { useScroll, motion } from "framer-motion";
 import TableOfContents from "../TableOfContents";
+
 const MarkdownViewer = ({ content }: { content: string }) => {
   const { scrollYProgress } = useScroll();
   return (
