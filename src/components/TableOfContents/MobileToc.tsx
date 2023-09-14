@@ -38,7 +38,7 @@ const MobileToc = ({ onClick, headings, activeId }: ToCProps) => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -30, opacity: 0 }}
             transition={{ duration: 0.3, type: "spring" }}
-            className="absolute border overflow-x-hidden  dark:border-gray-500 space-y-2 overflow-auto dark:bg-[#202023] bg-white right-0 h-48 px-2 py-2 rounded-md shadow-md top-12 w-52"
+            className="absolute border overflow-x-hidden  dark:border-gray-500 space-y-2 overflow-auto dark:bg-[#202023] bg-white right-0 max-h-48 px-2 py-2 rounded-md shadow-md top-12 w-52"
           >
             {headings?.map((heading) => (
               <li
