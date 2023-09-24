@@ -9,7 +9,7 @@ export interface IHeadings {
   id: string;
 }
 export interface ToCProps {
-  onClick: (e: MouseEvent<HTMLAnchorElement>, id: string) => void;
+  onClick: (e: MouseEvent<HTMLLIElement>, id: string) => void;
   headings?: IHeadings[];
   activeId: string;
 }
@@ -17,7 +17,7 @@ const TableOfContents = () => {
   const [headings, setHeadings] = useState<IHeadings[]>();
   const { activeId } = useActiveToc();
 
-  const onClick = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
+  const onClick = (e: MouseEvent<HTMLLIElement>, id: string) => {
     e.preventDefault();
     document.querySelector(`#${id}`)?.scrollIntoView({
       behavior: "smooth",
