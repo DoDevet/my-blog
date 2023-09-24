@@ -7,10 +7,19 @@ interface TocList {
   activeId: string;
   level: string;
   text: string;
+  mobile?: boolean;
 }
-const TocList = ({ onClick, id, activeId, level, text }: TocList) => {
+const TocList = ({
+  onClick,
+  id,
+  activeId,
+  level,
+  text,
+  mobile = false,
+}: TocList) => {
   return (
     <li
+      id={mobile ? `list_${id}` : undefined}
       onClick={onClick}
       className={cls(
         "transition-colors cursor-pointer hover:text-sky-500 dark:hover:text-violet-400",
