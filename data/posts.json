@@ -103,8 +103,8 @@
   },
   {
     "id": "11",
-    "title": "Second Posts",
-    "description": "Test",
+    "title": "Node.js",
+    "description": "Node",
     "category": "Any",
     "date": "2023-06-22",
     "path": "second-post",
