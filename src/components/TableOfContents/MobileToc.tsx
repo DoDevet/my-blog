@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { RiCloseLine, RiMenuUnfoldLine } from "react-icons/ri";
 import { ToCProps } from ".";
+import TocList from "./TocList";
 
 const MobileToc = ({ onClick, headings, activeId }: ToCProps) => {
   const [open, setOpen] = useState(false);
@@ -41,29 +42,15 @@ const MobileToc = ({ onClick, headings, activeId }: ToCProps) => {
             className="absolute border overflow-x-hidden  dark:border-gray-500 space-y-2 overflow-auto dark:bg-[#202023] bg-white right-0 max-h-48 px-2 py-2 rounded-md shadow-md top-12 w-52"
           >
             {headings?.map((heading) => (
-              <li
+              <TocList
+                onClick={(e) => {
+                  onClick(e, heading.id);
+                  toggleOpen();
+                }}
+                activeId={activeId}
+                {...heading}
                 key={heading.id}
-                className={`${heading.level === "3" && "ml-2"} ${
-                  heading.level === "4" && "ml-6 list-inside list-disc"
-                }`}
-              >
-                <a
-                  id={`list_${heading.id}`}
-                  href={`#${heading.id}`}
-                  className={cls(
-                    "transition-colors hover:text-sky-500 dark:hover:text-violet-400",
-                    activeId === heading.id
-                      ? "text-sky-500 dark:text-violet-400"
-                      : ""
-                  )}
-                  onClick={(e) => {
-                    onClick(e, heading.id);
-                    toggleOpen();
-                  }}
-                >
-                  {heading.text}
-                </a>
-              </li>
+              />
             ))}
           </motion.ul>
         ) : null}

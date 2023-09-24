@@ -1,6 +1,6 @@
 "use client";
-import { cls } from "@/libs/utils";
 import { ToCProps } from ".";
+import TocList from "./TocList";
 
 const DeskTopToC = ({ onClick, headings, activeId }: ToCProps) => {
   return (
