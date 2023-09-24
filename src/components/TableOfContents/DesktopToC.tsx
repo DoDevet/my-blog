@@ -9,14 +9,27 @@ const DeskTopToC = ({ onClick, headings, activeId }: ToCProps) => {
         <h1 className="py-2 my-2 text-lg font-semibold border-b">
           Table Of Contents
         </h1>
-        <ul className="max-h-full pb-2 space-y-2">
+        <ul className="max-h-full pb-2 space-y-2 ">
           {headings?.map((heading) => (
-            <TocList
-              onClick={(e) => onClick(e, heading.id)}
-              activeId={activeId}
-              {...heading}
+            <li
               key={heading.id}
-            />
+              className={`${heading.level === "3" && "ml-2"} ${
+                heading.level === "4" && "ml-6 list-inside list-disc"
+              }`}
+            >
+              <a
+                href={`#${heading.id}`}
+                className={cls(
+                  "transition-colors hover:text-sky-500 dark:hover:text-violet-400",
+                  activeId === heading.id
+                    ? "text-sky-500 dark:text-violet-400"
+                    : ""
+                )}
+                onClick={(e) => onClick(e, heading.id)}
+              >
+                {heading.text}
+              </a>
+            </li>
           ))}
         </ul>
       </nav>
