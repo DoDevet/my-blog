@@ -1,4 +1,3 @@
-import { cls } from "@/libs/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { RiCloseLine, RiMenuUnfoldLine } from "react-icons/ri";
@@ -9,7 +8,8 @@ const MobileToc = ({ onClick, headings, activeId }: ToCProps) => {
   const [open, setOpen] = useState(false);
   useEffect(() => {
     if (open) {
-      document.querySelector(`#list_${activeId}`)?.scrollIntoView({
+      const list = document.querySelector(`#list_${activeId}`);
+      list?.scrollIntoView({
         block: "nearest",
         behavior: "smooth",
       });
@@ -43,13 +43,14 @@ const MobileToc = ({ onClick, headings, activeId }: ToCProps) => {
           >
             {headings?.map((heading) => (
               <TocList
+                mobile
+                key={heading.id}
+                activeId={activeId}
                 onClick={(e) => {
                   onClick(e, heading.id);
                   toggleOpen();
                 }}
-                activeId={activeId}
                 {...heading}
-                key={heading.id}
               />
             ))}
           </motion.ul>
