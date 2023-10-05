@@ -48,9 +48,10 @@ const MarkdownViewer = ({ content }: { content: string }) => {
             <Image
               src={src || ""}
               alt={src || ""}
-              className="w-auto h-auto bg-white shadow-md"
-              width={1500}
-              height={1500}
+              className="bg-white shadow-md"
+              width={500}
+              height={500}
+              priority
             />
           ),
         }}
