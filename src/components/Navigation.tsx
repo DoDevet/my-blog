@@ -6,10 +6,37 @@ import { usePathname } from "next/navigation";
 import { cls } from "@/libs/utils";
 import { router } from "@/constants";
 import { LiaBlogSolid } from "react-icons/lia";
+import { useEffect, useState } from "react";
+
 export default function Navigation() {
   const pathname = usePathname();
+  const [scrollDown, setScrollDown] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollEvent = document.documentElement.scrollTop;
+      setScrollDown(scrollEvent > 0 ? true : false);
+    };
+    if (
+      pathname.includes("/posts") &&
+      pathname.replaceAll("/posts", "").length > 0
+    ) {
+      window.addEventListener("scroll", handleScroll);
+    }
+    return () => {
+      setScrollDown(false);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [pathname]);
+
   return (
-    <div className="fixed top-0 right-0 z-10 flex items-center justify-center w-full px-3 shadow-md md:px-32 backdrop-blur-lg">
+    <header
+      className={`sticky top-0 z-10 flex items-center w-full px-3 shadow-md ig md:px-32 transition-all ${
+        scrollDown
+          ? "delay-300 dark:bg-[#202023] bg-white"
+          : " backdrop-blur-lg"
+      }`}
+    >
       <div className="flex items-center justify-between w-full py-4 max-w-7xl">
         <Link
           href="/"
@@ -42,6 +69,6 @@ export default function Navigation() {
         <DarkMode />
         <NavMenu />
       </div>
-    </div>
+    </header>
   );
 }

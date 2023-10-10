@@ -4,7 +4,7 @@ import TocList from "./TocList";
 
 const DeskTopToC = ({ onClick, headings, activeId }: ToCProps) => {
   return (
-    <section className="sticky hidden px-2 ml-3 text-sm top-32 xl:block">
+    <section className="sticky hidden px-2 ml-3 text-sm top-32 xl:block ">
       <nav className="absolute overflow-auto -right-52">
         <h1 className="py-2 my-2 text-lg font-semibold border-b">
           Table Of Contents

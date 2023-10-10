@@ -13,7 +13,7 @@ const MarkdownViewer = ({ content }: { content: string }) => {
   return (
     <>
       <motion.div
-        className="fixed left-0 right-0 h-1 origin-left bg-sky-300 top-14 dark:bg-violet-300"
+        className="fixed left-0 right-0 h-2 origin-left bg-gradient-to-br backdrop-blur-sm from-sky-300 via-blue-400 to-indigo-500 top-14 dark:from-violet-300 dark:via-purple-400 dark:to-fuchsia-500"
         style={{ scaleX: scrollYProgress }}
       />
 
@@ -48,7 +48,7 @@ const MarkdownViewer = ({ content }: { content: string }) => {
             <Image
               src={src || ""}
               alt={src || ""}
-              className="bg-white shadow-md"
+              className="w-auto h-auto bg-white shadow-md"
               width={500}
               height={500}
               priority
