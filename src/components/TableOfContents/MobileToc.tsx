@@ -14,7 +14,7 @@ const MobileToc = ({ onClick, headings, activeId }: ToCProps) => {
         behavior: "smooth",
       });
     }
-  }, [open]);
+  }, [open, activeId]);
   const toggleOpen = () => {
     setOpen((prev) => !prev);
   };
