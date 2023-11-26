@@ -9,7 +9,7 @@ const DeskTopToC = ({ onClick, headings, activeId }: ToCProps) => {
         <h1 className="py-2 my-2 text-lg font-semibold border-b">
           Table Of Contents
         </h1>
-        <ul className="max-h-full pb-2 space-y-2 ">
+        <ul className="pb-2 space-y-2 overflow-y-auto h-[calc(100vh-200px)] ">
           {headings?.map((heading) => (
             <TocList
               onClick={(e) => {
