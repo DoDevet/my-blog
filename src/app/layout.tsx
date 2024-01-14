@@ -40,7 +40,6 @@ export default function RootLayout({
       <body className="dark:bg-[#202023] overflow-auto dark:text-white  text-gray-800 bg-slate-50 flex flex-col w-full justify-center items-center">
         <Providers>
           <Navigation />
-
           <main className="w-full max-w-5xl px-5 mt-8 grow">{children}</main>
           <footer className="pt-4 text-sm text-gray-400 whitespace-nowrap">
             © 2023 DoDevet
