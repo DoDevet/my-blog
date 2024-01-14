@@ -37,7 +37,7 @@ export default function Navigation() {
           : " backdrop-blur-lg"
       }`}
     >
-      <div className="flex items-center justify-between w-full py-4 max-w-7xl">
+      <div className="flex items-center justify-between w-full py-4 mx-auto max-w-7xl">
         <Link
           href="/"
           className="flex items-center text-xl font-semibold group"
