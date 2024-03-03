@@ -9,7 +9,7 @@ const CareerInfo = ({ caption, captionHref, date }: CareerInfoProps) => {
   return (
     <section className="flex items-center w-full space-x-3">
       <div>•</div>
-      <div>
+      <div className="font-bold">
         {captionHref ? (
           <Link
             className="text-blue-400 border-b border-b-blue-400"
@@ -21,7 +21,7 @@ const CareerInfo = ({ caption, captionHref, date }: CareerInfoProps) => {
           <p>{caption}</p>
         )}
 
-        {date && <p className="text-sm">{date}</p>}
+        {date && <p className="text-sm font-normal">{date}</p>}
       </div>
     </section>
   );

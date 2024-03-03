@@ -41,6 +41,7 @@ const PostDetail = async ({ params: { slug } }: PostDetailProps) => {
   );
 };
 export default PostDetail;
+
 export const generateStaticParams = async () => {
   const posts = await getPosts({});
   return posts.map((post) => ({

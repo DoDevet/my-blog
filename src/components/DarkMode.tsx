@@ -16,7 +16,7 @@ const DarkMode = () => {
 
   return (
     <div
-      className="transition-colors cursor-pointer  hover:text-slate-400"
+      className="transition-colors cursor-pointer hover:text-slate-400"
       onClick={onClick}
     >
       {mounted === "light" ? (

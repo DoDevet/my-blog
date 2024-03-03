@@ -2,7 +2,6 @@ import Profile from "@/components/Profile";
 import IntroduceForm from "@/components/about/IntroduceForm";
 import PostsForm from "@/components/PostsForm";
 import { Metadata } from "next";
-import Link from "next/link";
 import CareerInfo from "@/components/about/CareerInfo";
 
 export const metadata: Metadata = {

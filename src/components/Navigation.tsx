@@ -31,7 +31,7 @@ export default function Navigation() {
 
   return (
     <header
-      className={`sticky top-0 z-10 flex items-center w-full px-3 shadow-md ig md:px-32 transition-all ${
+      className={`sticky top-0 z-10 flex items-center w-full px-3 shadow-md ig transition-all ${
         scrollDown
           ? "delay-300 dark:bg-[#202023] bg-white"
           : " backdrop-blur-lg"
@@ -46,28 +46,30 @@ export default function Navigation() {
           <p className="pr-4 whitespace-nowrap"> {`Jihun's Blog`}</p>
         </Link>
 
-        <ul className="hidden space-x-7 md:block">
-          {router.map(([href, name], index) => (
-            <Link
-              href={href}
-              key={href}
-              className={cls(
-                "transition-colors dark:hover:text-violet-400 hover:text-sky-500",
-                index !== 0 && pathname.startsWith(href)
-                  ? "dark:text-violet-400 text-sky-500"
-                  : index === 0 && pathname === href
-                  ? "dark:text-violet-400 text-sky-500"
-                  : ""
-              )}
-            >
-              {name}
-            </Link>
-          ))}
-        </ul>
-      </div>
-      <div className="flex ml-16 space-x-2">
-        <DarkMode />
-        <NavMenu />
+        <div className="flex items-center space-x-7">
+          <ul className="hidden space-x-7 md:block">
+            {router.map(([href, name], index) => (
+              <Link
+                href={href}
+                key={href}
+                className={cls(
+                  "transition-colors dark:hover:text-violet-400 hover:text-sky-500",
+                  index !== 0 && pathname.startsWith(href)
+                    ? "dark:text-violet-400 text-sky-500"
+                    : index === 0 && pathname === href
+                    ? "dark:text-violet-400 text-sky-500"
+                    : ""
+                )}
+              >
+                {name}
+              </Link>
+            ))}
+          </ul>
+          <div className="flex space-x-2">
+            <DarkMode />
+            <NavMenu />
+          </div>
+        </div>
       </div>
     </header>
   );
