@@ -2,6 +2,10 @@
 import Carousel, { ResponsiveType } from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
+interface CarouselPostsProps {
+  children: React.ReactNode;
+}
+
 const responsive: ResponsiveType = {
   desktop: {
     breakpoint: {
@@ -19,11 +23,7 @@ const responsive: ResponsiveType = {
     items: 1,
   },
 };
-export default function CarouselPosts({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function CarouselPosts({ children }: CarouselPostsProps) {
   return (
     <Carousel
       itemClass="px-2"
