@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import Navigation from "../components/Navigation";
 import Providers from "./providers";
@@ -38,6 +39,7 @@ export default function RootLayout({
         />
       </head>
       <body className="dark:bg-[#202023] overflow-auto dark:text-white  text-gray-800 bg-slate-50 flex flex-col w-full justify-center items-center">
+        <Analytics />
         <Providers>
           <Navigation />
           <main className="w-full max-w-5xl px-5 mt-8 grow">{children}</main>
