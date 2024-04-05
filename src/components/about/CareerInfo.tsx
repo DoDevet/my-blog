@@ -11,12 +11,13 @@ const CareerInfo = ({ caption, captionHref, date }: CareerInfoProps) => {
       <div>•</div>
       <div className="font-bold">
         {captionHref ? (
-          <Link
+          <a
+            target="_blank"
             className="text-blue-400 border-b border-b-blue-400"
             href={captionHref}
           >
             {caption}
-          </Link>
+          </a>
         ) : (
           <p>{caption}</p>
         )}
