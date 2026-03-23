@@ -17,8 +17,13 @@ const PostsForm = async ({
   const posts = await getPosts({ category, isFeatured });
 
   return (
-    <section>
-      {title ? <h1 className="text-2xl font-bold">{title}</h1> : null}
+    <section className="space-y-4">
+      {title ? (
+        <div className="flex items-center gap-3">
+          <div className="w-1 h-7 rounded-full bg-gradient-to-b from-sky-500 to-indigo-500 dark:from-violet-400 dark:to-fuchsia-500" />
+          <h1 className="text-2xl font-bold tracking-tight">{title}</h1>
+        </div>
+      ) : null}
       {carousel ? (
         <CarouselPosts>
           {posts.map((post) => (

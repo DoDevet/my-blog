@@ -20,10 +20,14 @@ const IntroduceForm = ({
     <div
       className={cls(
         "mx-auto",
-        children !== undefined ? "w-full" : " -space-y-1 text-center"
+        children !== undefined ? "w-full" : "-space-y-0.5 text-center"
       )}
     >
-      <h1 className="text-2xl font-semibold text-center">{title}</h1>
+      <div className="flex items-center justify-center gap-2 mb-2">
+        <div className="w-8 h-0.5 rounded-full bg-gradient-to-r from-sky-500 to-indigo-500 dark:from-violet-400 dark:to-fuchsia-500" />
+        <h2 className="text-2xl font-bold tracking-tight">{title}</h2>
+        <div className="w-8 h-0.5 rounded-full bg-gradient-to-r from-indigo-500 to-sky-500 dark:from-fuchsia-500 dark:to-violet-400" />
+      </div>
       {image && (
         <Image
           src={image}
@@ -35,9 +39,13 @@ const IntroduceForm = ({
         />
       )}
       {Array.isArray(description) ? (
-        description.map((description) => <p key={description}>{description}</p>)
+        description.map((description) => (
+          <p key={description} className="text-gray-600 dark:text-gray-300">
+            {description}
+          </p>
+        ))
       ) : (
-        <p>{description}</p>
+        <p className="text-gray-600 dark:text-gray-300">{description}</p>
       )}
       {children}
     </div>

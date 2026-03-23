@@ -23,17 +23,19 @@ const PostDetail = async ({ params: { slug } }: PostDetailProps) => {
 
   return (
     <article className="w-full">
-      <Image
-        className="w-full h-auto rounded-md shadow-md"
-        src={image}
-        priority
-        alt={title}
-        width={760}
-        height={420}
-      />
+      <div className="overflow-hidden rounded-xl shadow-md">
+        <Image
+          className="w-full h-auto"
+          src={image}
+          priority
+          alt={title}
+          width={760}
+          height={420}
+        />
+      </div>
 
       <PostContent {...post} />
-      <nav className="flex items-center py-4 space-x-4">
+      <nav className="flex items-center py-6 gap-4">
         {prevPost && <PostNav left {...prevPost} />}
         {nextPost && <PostNav {...nextPost} />}
       </nav>

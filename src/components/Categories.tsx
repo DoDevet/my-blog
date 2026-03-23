@@ -12,21 +12,21 @@ const Categories = ({ categories }: CategoriesProps) => {
 
   return (
     (pathname === "/posts" || pathname.includes("categories")) && (
-      <section className={`w-24 mt-3`}>
-        <ul className="fixed w-24">
-          <h1 className="pb-2 text-xl font-semibold border-b border-gray-700 dark:border-gray-300">
+      <section className="w-28 mt-3">
+        <ul className="fixed w-28">
+          <h2 className="pb-2 text-lg font-bold border-b border-gray-200 dark:border-gray-700">
             Categories
-          </h1>
-          <section className="flex flex-col py-2 space-y-1">
+          </h2>
+          <section className="flex flex-col py-3 space-y-2">
             {categories?.map((category, index) => (
               <Link
                 href={index === 0 ? `/posts` : `/posts/categories/${category}`}
                 className={cls(
-                  "cursor-pointer dark:hover:text-violet-400 hover:text-sky-400 transition-colors",
+                  "text-sm cursor-pointer transition-colors hover:text-sky-500 dark:hover:text-violet-400",
                   pathname.includes(category) ||
                     (pathname === "/posts" && index === 0)
-                    ? "dark:text-violet-400 text-sky-400"
-                    : ""
+                    ? "dark:text-violet-400 text-sky-500 font-semibold"
+                    : "text-gray-500 dark:text-gray-400"
                 )}
                 key={index}
               >
