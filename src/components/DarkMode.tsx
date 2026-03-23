@@ -16,13 +16,13 @@ const DarkMode = () => {
 
   return (
     <div
-      className="transition-colors cursor-pointer  hover:text-slate-400"
+      className="p-2 transition-colors rounded-lg cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800"
       onClick={onClick}
     >
       {mounted === "light" ? (
-        <BsMoon className="w-8 h-8 p-1" />
+        <BsMoon className="w-5 h-5" />
       ) : (
-        <BsSun className="w-8 h-8 p-1" />
+        <BsSun className="w-5 h-5 text-yellow-400" />
       )}
     </div>
   );

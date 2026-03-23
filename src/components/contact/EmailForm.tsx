@@ -23,9 +23,9 @@ const EmailForm = () => {
   return (
     <div className="relative flex flex-col w-full max-w-2xl">
       <Divider text="OR" />
-      <h1 className="py-3 mx-auto font-semibold">Send Email</h1>
+      <h2 className="py-3 mx-auto text-lg font-bold tracking-tight">Send Email</h2>
       <form
-        className="flex flex-col w-full space-y-1"
+        className="flex flex-col w-full gap-3"
         onSubmit={handleSubmit(onSubmit)}
       >
         <Input
@@ -44,7 +44,7 @@ const EmailForm = () => {
             required: true,
           })}
         />
-        <button className="absolute px-2 py-1 text-white transition-colors rounded-md bg-sky-500 dark:bg-indigo-500 right-1 -bottom-9 hover:bg-sky-600 dark:hover:bg-indigo-600">
+        <button className="self-end px-5 py-2 mt-2 text-sm font-medium text-white transition-all duration-200 rounded-full shadow-md bg-gradient-to-r from-sky-500 to-indigo-500 dark:from-violet-500 dark:to-fuchsia-500 hover:shadow-lg hover:-translate-y-0.5">
           {loading ? "Sending..." : "Send"}
         </button>
       </form>

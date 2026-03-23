@@ -37,12 +37,15 @@ export default function RootLayout({
           content="62ffeadf5d6fdc3b76b6be7cd03e54d3acc23686"
         />
       </head>
-      <body className="dark:bg-[#202023] overflow-auto dark:text-white  text-gray-800 bg-slate-50 flex flex-col w-full justify-center items-center">
+      <body className="dark:bg-[#202023] overflow-auto dark:text-white text-gray-800 bg-slate-50 flex flex-col w-full justify-center items-center min-h-screen">
         <Providers>
           <Navigation />
           <main className="w-full max-w-5xl px-5 mt-8 grow">{children}</main>
-          <footer className="pt-4 text-sm text-gray-400 whitespace-nowrap">
-            © 2023 DoDevet
+          <footer className="w-full mt-12 border-t border-gray-200 dark:border-gray-800">
+            <div className="flex flex-col items-center justify-center gap-2 py-6 text-sm text-gray-400">
+              <p className="font-medium">Jihun&apos;s Blog</p>
+              <p>© 2023 DoDevet. All rights reserved.</p>
+            </div>
           </footer>
         </Providers>
       </body>

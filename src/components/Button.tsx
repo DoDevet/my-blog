@@ -9,9 +9,7 @@ const RouteButton = ({ href, btnText }: RouteButtonProps) => {
   return (
     <Link
       href={href}
-      className={
-        "px-2 py-1 mx-auto block w-fit mt-4 bg-sky-500 hover:bg-sky-600 text-white dark:bg-orange-600 rounded-md dark:hover:bg-orange-700 transition-colors shadow-sm"
-      }
+      className="inline-flex items-center px-5 py-2 text-sm font-medium text-white transition-all duration-200 rounded-full shadow-md bg-gradient-to-r from-sky-500 to-indigo-500 hover:from-sky-600 hover:to-indigo-600 dark:from-violet-500 dark:to-fuchsia-500 dark:hover:from-violet-600 dark:hover:to-fuchsia-600 hover:shadow-lg hover:-translate-y-0.5"
     >
       {btnText}
     </Link>
